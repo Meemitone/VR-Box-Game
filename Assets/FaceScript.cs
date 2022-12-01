@@ -5,6 +5,7 @@ using UnityEngine;
 public class FaceScript : MonoBehaviour
 {
     [HideInInspector] public Vector3 inUp, inFor, inLef, inRig, inBac;
+    [HideInInspector] public GameObject faceFor, faceLef, faceRight, faceDown;
     // Start is called before the first frame update
     void Awake()
     {
