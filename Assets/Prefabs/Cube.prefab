@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1006754213293053669}
   - component: {fileID: 868587762738712759}
   - component: {fileID: 7419534890178468671}
+  - component: {fileID: 3763910899878717824}
   m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
@@ -30,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 2522592105603172253}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.25, z: 3.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2522592105560824252}
   - {fileID: 8688154980008348168}
@@ -336,6 +337,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &3763910899878717824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2522592105603172253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5bda0efdcd7c0b4ea959a6f977bc965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &428935750358835328
 PrefabInstance:
   m_ObjectHideFlags: 0
