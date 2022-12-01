@@ -60,6 +60,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a945ff023466e74eac3605509d8a8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 0
+  cubeOverlaps: []
+  faceOverlaps: []
+  cube: {fileID: 0}
+  face: {fileID: 0}
+  cubeMask:
+    serializedVersion: 2
+    m_Bits: 0
+  faceMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!33 &566612313018814571
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -75,7 +86,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5335941015504593144}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
