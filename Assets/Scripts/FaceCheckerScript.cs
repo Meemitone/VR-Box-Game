@@ -33,15 +33,4 @@ public class FaceCheckerScript : MonoBehaviour
             face = faceOverlaps[0].GetComponent<FaceScript>();
         }
     }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
