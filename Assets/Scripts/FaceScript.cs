@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,11 @@ public class FaceScript : MonoBehaviour
     private int CubeLayer = 1<<6;//this is the layer that cubes are on, the faces occupy layer 7
     [SerializeField] private FaceCheckerScript north, south, east, west; //these are the face checkers
     public CubeScript.dirs sourcedir;
+
+    
+
     public CubeScript.dirs nDir, sDir, eDir, wDir;
-    private CubeScript myCube;
+    public CubeScript myCube;
 
     void Awake()
     {
@@ -21,6 +25,26 @@ public class FaceScript : MonoBehaviour
         if (checklist.Length > 0)
             gameObject.SetActive(false);//face hit at least 1 cube so disable it (and therefore it's childs
         myCube = transform.parent.gameObject.GetComponent<CubeScript>();
+    }
+
+    public CubeScript.dirs GetMoveDir(CubeScript.dirs facing)
+    {
+        FaceScript target = GetFaceInDir(facing);
+        if(target.sourcedir == sourcedir)
+        {
+            return facing;
+        }
+        if(target.sourcedir == facing)
+        {
+            //wrap around
+            return myCube.OppositeDir(sourcedir);
+        }
+
+        {
+            //climbing scenario
+            return sourcedir;
+        }
+        //I overestimated how difficult this was to find
     }
 
     private void Start()
@@ -137,5 +161,17 @@ public class FaceScript : MonoBehaviour
             }
         }
         //bracketed to make collapsable in editor
+    }
+    public FaceScript GetFaceInDir(CubeScript.dirs facing)
+    {
+        if (facing == nDir)
+            return faceNorth;
+        if (facing == sDir)
+            return faceSouth;
+        if (facing == eDir)
+            return faceEast;
+        if (facing == wDir)
+            return faceWest;
+        return null;
     }
 }

@@ -73,6 +73,10 @@ MonoBehaviour:
   east: {fileID: 6218679524462165512}
   west: {fileID: 340324494192130951}
   sourcedir: 0
+  nDir: 0
+  sDir: 0
+  eDir: 0
+  wDir: 0
 --- !u!23 &1266727093618022043
 MeshRenderer:
   m_ObjectHideFlags: 0
