@@ -9,6 +9,7 @@ public class FaceScript : MonoBehaviour
     private int CubeLayer = 1<<6;//this is the layer that cubes are on, the faces occupy layer 7
     [SerializeField] private FaceCheckerScript north, south, east, west; //these are the face checkers
     public CubeScript.dirs sourcedir;
+    public CubeScript.dirs nDir, sDir, eDir, wDir;
     private CubeScript myCube;
 
     void Awake()
@@ -84,6 +85,7 @@ public class FaceScript : MonoBehaviour
                 {
                     faceEast = myCube.GetIntWrapperFace(sourcedir, east.direction);
                 }
+                eDir = east.direction;
             }
             //west block
             {
@@ -99,6 +101,7 @@ public class FaceScript : MonoBehaviour
                 {
                     faceWest = myCube.GetIntWrapperFace(sourcedir, west.direction);
                 }
+                wDir = west.direction;
             }
             //north block
             {
@@ -114,6 +117,7 @@ public class FaceScript : MonoBehaviour
                 {
                     faceNorth = myCube.GetIntWrapperFace(sourcedir, north.direction);
                 }
+                nDir = north.direction;
             }
             //south block
             {
@@ -129,7 +133,9 @@ public class FaceScript : MonoBehaviour
                 {
                     faceSouth = myCube.GetIntWrapperFace(sourcedir, south.direction);
                 }
+                sDir = south.direction;
             }
-        }//bracketed to make collapsable in editor
+        }
+        //bracketed to make collapsable in editor
     }
 }
