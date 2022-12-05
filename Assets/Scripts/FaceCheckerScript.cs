@@ -10,7 +10,7 @@ public class FaceCheckerScript : MonoBehaviour
     public FaceScript face = null;
     public LayerMask cubeMask;
     public LayerMask faceMask;
-    private void Awake()
+    public void doAwake()
     {
         cubeMask = LayerMask.GetMask("Cubes");
         faceMask = LayerMask.GetMask("Faces");

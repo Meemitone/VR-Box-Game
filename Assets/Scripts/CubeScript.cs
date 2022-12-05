@@ -19,6 +19,13 @@ public class CubeScript : MonoBehaviour
         right.sourcedir = dirs.RIGHT;
         foreward.sourcedir = dirs.FOREWARD;
         back.sourcedir = dirs.BACK;
+
+        up.doAwake();
+        down.doAwake();
+        left.doAwake();
+        right.doAwake();
+        foreward.doAwake();
+        back.doAwake();
     }
 
     public FaceScript GetIntWrapperFace(dirs source, dirs rection)//get the wraparound face of this cube to this cube
