@@ -32,7 +32,7 @@ public class FaceScript : MonoBehaviour
         if (checklist.Length > 1)
             Debug.Log("Face hit multiple cubes", transform.parent.gameObject);
         if (checklist.Length > 0)
-            gameObject.SetActive(false);//face hit at least 1 cube so disable it (and therefore it's childs
+            gameObject.SetActive(false);//face hit at least 1 cube so disable it (and therefore it's childs)
         if (faceT == FaceType.BLOCK)
         { //neccesary? all this really does is make it unleavable
             gameObject.SetActive(false);

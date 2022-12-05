@@ -74,6 +74,9 @@ public class PlayerProgrammer : MonoBehaviour
 
     public void AddLink(int codenum)
     {
+        if (!allowCode)
+            return;
+
         GameObject newCode = null;
         codes code = (codes)codenum;
         switch(code)
@@ -121,7 +124,7 @@ public class PlayerProgrammer : MonoBehaviour
         if (listFirst == null)
             return;
 
-        if (!proceed)
+        if (allowCode)
         {
             proceed = true;
             allowCode = false;

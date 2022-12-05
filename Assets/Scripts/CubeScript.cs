@@ -13,6 +13,9 @@ public class CubeScript : MonoBehaviour
 
     private void Awake()
     {
+        //here and in FaceScript.Start() I gotta make the knowledge known from vectors to apply rotations
+
+
         up.sourcedir = dirs.UP;
         down.sourcedir = dirs.DOWN;
         left.sourcedir = dirs.LEFT;
