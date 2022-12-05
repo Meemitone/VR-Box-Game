@@ -25,7 +25,7 @@ public class FaceScript : MonoBehaviour
         CHECK, //checkpoint
     }
 
-    void Awake()
+    public void doAwake()
     {
         //check if this face is inside a cube, if so, then it can't be traversed 
         Collider[] checklist = Physics.OverlapSphere(transform.position, 0.01f, CubeLayer, QueryTriggerInteraction.Collide);
@@ -38,6 +38,10 @@ public class FaceScript : MonoBehaviour
             gameObject.SetActive(false);
         }
         myCube = transform.parent.gameObject.GetComponent<CubeScript>();
+        north.doAwake();
+        south.doAwake();
+        east.doAwake();
+        west.doAwake();
     }
 
     public CubeScript.dirs GetMoveDir(CubeScript.dirs facing)
