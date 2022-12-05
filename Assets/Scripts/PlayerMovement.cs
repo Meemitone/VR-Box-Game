@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public CubeScript.dirs targetDir;//which way the player is going to face next update
     private FaceScript targetFace;//the face the player will be on next update
     public int numberOfSteps = 1; //number of frames it takes to complete movement, 1 is instant framerate is 1 second
+    public float stepTime = 0.5f;//amount of time to make a step
     [SerializeField] private float moveHeight;
     private PlayerProgrammer prog;
 
@@ -81,24 +82,50 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("activate space needs to be written");
     }
 
+    public void Cease(FaceScript resetFace, CubeScript.dirs resetDir)
+    {
+        StopAllCoroutines();
+        targetFace = resetFace;
+        targetDir = resetDir;
+        StartCoroutine(Resolve());
+    }
+
     IEnumerator Resolve()
     {
         Vector3 currentPos = transform.position;
         Vector3 targetPos = targetFace.transform.position;
         Quaternion currentRot = transform.rotation;
         Quaternion targetRot = GetTargetRot();
-        int tempSteps = numberOfSteps;
-        for(int i = 0; i < tempSteps; i++)
+        /*
         {
-            float div = i / ((float)tempSteps);
-            float tempHeight = moveHeight * Mathf.Sin(i / ((float)tempSteps) * Mathf.PI);
-            transform.position = Vector3.Lerp(currentPos,targetPos,div);
-            Vector3 heightadjust = transform.up * tempHeight;
-            transform.localPosition += heightadjust;
-            //this is the part where the arc needs defining
+            int tempSteps = numberOfSteps;
+            for (int i = 0; i < tempSteps; i++)
+            {
+                float div = i / ((float)tempSteps);
+                float tempHeight = moveHeight * Mathf.Sin(i / ((float)tempSteps) * Mathf.PI);
+                transform.position = Vector3.Lerp(currentPos, targetPos, div);
+                Vector3 heightadjust = transform.up * tempHeight;
+                transform.localPosition += heightadjust;
+                transform.rotation = Quaternion.Slerp(currentRot, targetRot, div);
+                yield return null;
+            }
+        }
+        */
+        float tempTime = stepTime;
+        float currentTime = 0;
+        while(currentTime<tempTime)
+        {
+            currentTime += Time.deltaTime;
+            float div = currentTime / tempTime;
+            float tempHeight = moveHeight * Mathf.Sin((div) * Mathf.PI);
+            transform.position = Vector3.Lerp(currentPos, targetPos, div);
+            transform.localPosition += transform.up * tempHeight;
             transform.rotation = Quaternion.Slerp(currentRot, targetRot, div);
+
             yield return null;
         }
+
+
         transform.position = targetPos;
         transform.rotation = targetRot;
         standing = targetFace;
