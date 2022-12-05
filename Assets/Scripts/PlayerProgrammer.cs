@@ -6,11 +6,12 @@ public class PlayerProgrammer : MonoBehaviour
 {
     public bool proceed = false;
     private PlayerMovement player;
-    private FaceScript resetFace;
-    private CubeScript.dirs resetDir;
+    public FaceScript resetFace;
+    public CubeScript.dirs resetDir;
     CodeSegment listFirst;
     CodeSegment currentCode;
     CodeSegment listLast;
+    public bool allowCode = true;
 
     public GameObject codeMove, codeLeft, codeRight, codeUse;
     public enum codes
@@ -40,13 +41,41 @@ public class PlayerProgrammer : MonoBehaviour
     {
         if(proceed)
         {
-
+            proceed = false;
+            if (currentCode == null)
+            {
+                currentCode = listFirst;
+            }
+            if (currentCode != null)
+            {
+                switch (currentCode.code)
+                {
+                    case codes.STEP:
+                        player.MovePlayer();
+                        break;
+                    case codes.LEFT:
+                        player.TurnPlayerLeft();
+                        break;
+                    case codes.RIGHT:
+                        player.TurnPlayerRight();
+                        break;
+                    case codes.USE:
+                        player.ActivateSpace();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+                return;
+            currentCode = currentCode.nextCode;
         }
     }
 
-    public void AddLink(codes code)
+    public void AddLink(int codenum)
     {
         GameObject newCode = null;
+        codes code = (codes)codenum;
         switch(code)
         {
             case codes.STEP:
@@ -93,10 +122,15 @@ public class PlayerProgrammer : MonoBehaviour
             return;
 
         if (!proceed)
+        {
             proceed = true;
+            allowCode = false;
+            return;
+        }
 
         proceed = false;
 
         player.Cease(resetFace, resetDir);
+        allowCode = true;
     }
 }

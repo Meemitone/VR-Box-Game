@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class FaceScript : MonoBehaviour
 {
-    public FaceType faceType;
+    public FaceType faceT;
     [HideInInspector]
     public FaceScript faceNorth = null, faceWest = null, faceEast = null, faceSouth = null; //front is shorter than foreward
     private int CubeLayer = 1 << 6;//this is the layer that cubes are on, the faces occupy layer 7
     [SerializeField] private FaceCheckerScript north, south, east, west; //these are the face checkers
     public CubeScript.dirs sourcedir;
-
+    private CubeScript.dirs checkDir;
 
     public CubeScript.dirs nDir, sDir, eDir, wDir;
     public CubeScript myCube;
@@ -33,8 +33,8 @@ public class FaceScript : MonoBehaviour
             Debug.Log("Face hit multiple cubes", transform.parent.gameObject);
         if (checklist.Length > 0)
             gameObject.SetActive(false);//face hit at least 1 cube so disable it (and therefore it's childs
-        if (faceType == FaceType.BLOCK)
-        { //neccesary? all this really does is make itunleavable
+        if (faceT == FaceType.BLOCK)
+        { //neccesary? all this really does is make it unleavable
             gameObject.SetActive(false);
         }
         myCube = transform.parent.gameObject.GetComponent<CubeScript>();
@@ -183,28 +183,49 @@ public class FaceScript : MonoBehaviour
     {
         if (facing == nDir)
         {
-            if (faceNorth.faceType == FaceType.BLOCK)
+            if (faceNorth.faceT == FaceType.BLOCK)
                 return null;
             return faceNorth;
         }
         if (facing == sDir)
         {
-            if (faceSouth.faceType == FaceType.BLOCK)
+            if (faceSouth.faceT == FaceType.BLOCK)
                 return null;
             return faceSouth;
         }
         if (facing == eDir)
         {
-            if (faceEast.faceType == FaceType.BLOCK)
+            if (faceEast.faceT == FaceType.BLOCK)
                 return null;
             return faceEast;
         }
         if (facing == wDir)
         {
-            if (faceWest.faceType == FaceType.BLOCK)
+            if (faceWest.faceT == FaceType.BLOCK)
                 return null;
             return faceWest;
         }
         return null;
+    }
+
+    public bool Enter(PlayerMovement player)
+    {
+        switch(faceT)
+        {
+            case FaceType.CHECK:
+                if (player.prog.resetFace != this)
+                {
+                    if (sourcedir != CubeScript.dirs.FOREWARD && sourcedir != CubeScript.dirs.BACK)
+                        player.Cease(this, CubeScript.dirs.FOREWARD);
+                    else
+                        player.Cease(this, CubeScript.dirs.UP);
+                    player.prog.resetFace = this;
+                    return true;
+                }
+                break;
+            default:
+                return false;
+        }
+        return false;
     }
 }

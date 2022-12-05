@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public int numberOfSteps = 1; //number of frames it takes to complete movement, 1 is instant framerate is 1 second
     public float stepTime = 0.5f;//amount of time to make a step
     [SerializeField] private float moveHeight;
-    private PlayerProgrammer prog;
+    public PlayerProgrammer prog;
 
     // Start is called before the first frame update
 
@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         {
             targetFace = standing.GetFaceInDir(facing);
             targetDir = standing.GetMoveDir(facing);
-            StartCoroutine(Resolve());
+            StartCoroutine(Resolve(true));
         }
     }
 
@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
     {
         targetFace = standing;
         targetDir = getLeftTurn();
-        StartCoroutine(Resolve());
+        StartCoroutine(Resolve(true));
     }
 
     
@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
     {
         targetFace = standing;
         targetDir = standing.myCube.OppositeDir(getLeftTurn());
-        StartCoroutine(Resolve());
+        StartCoroutine(Resolve(true));
     }
 
     public void ActivateSpace()
@@ -87,10 +87,10 @@ public class PlayerMovement : MonoBehaviour
         StopAllCoroutines();
         targetFace = resetFace;
         targetDir = resetDir;
-        StartCoroutine(Resolve());
+        StartCoroutine(Resolve(false));
     }
 
-    IEnumerator Resolve()
+    IEnumerator Resolve(bool maintain)
     {
         Vector3 currentPos = transform.position;
         Vector3 targetPos = targetFace.transform.position;
@@ -131,8 +131,13 @@ public class PlayerMovement : MonoBehaviour
         standing = targetFace;
         facing = targetDir;
 
+        if(targetFace.Enter(this))
+        {
+            StartCoroutine(Resolve(false));
+            yield break;
+        }
 
-        prog.proceed = true;
+        prog.proceed = maintain;
     }
 
     private Quaternion GetTargetRot()
