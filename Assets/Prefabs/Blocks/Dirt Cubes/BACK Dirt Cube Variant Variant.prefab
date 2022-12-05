@@ -20,7 +20,7 @@ PrefabInstance:
     - target: {fileID: 3367340565442722636, guid: dd0a66cc14825034eb99615ba359541a,
         type: 3}
       propertyPath: m_Name
-      value: BACK Dirt Cube Variant
+      value: BACK Dirt Cube Variant Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3367340565442722640, guid: dd0a66cc14825034eb99615ba359541a,
         type: 3}
@@ -96,6 +96,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4422631887175831211, guid: dd0a66cc14825034eb99615ba359541a,
+        type: 3}
+      propertyPath: faceType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6668139370371748236, guid: dd0a66cc14825034eb99615ba359541a,
         type: 3}
