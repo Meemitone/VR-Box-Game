@@ -5,16 +5,25 @@ using UnityEngine;
 
 public class FaceScript : MonoBehaviour
 {
-    //[HideInInspector]
+    public FaceType faceType;
+    [HideInInspector]
     public FaceScript faceNorth = null, faceWest = null, faceEast = null, faceSouth = null; //front is shorter than foreward
-    private int CubeLayer = 1<<6;//this is the layer that cubes are on, the faces occupy layer 7
+    private int CubeLayer = 1 << 6;//this is the layer that cubes are on, the faces occupy layer 7
     [SerializeField] private FaceCheckerScript north, south, east, west; //these are the face checkers
     public CubeScript.dirs sourcedir;
 
-    
 
     public CubeScript.dirs nDir, sDir, eDir, wDir;
     public CubeScript myCube;
+
+    public enum FaceType
+    {
+        DEFAULT, //No trouble here, moveable terrain nothing more, nothing less
+        BLOCK, //No entry
+        KILL, //Entry Causes Reset
+        SPRING, //Use will put you over a pit, not a block (easier to code)
+        CHECK, //checkpoint
+    }
 
     void Awake()
     {
@@ -24,17 +33,21 @@ public class FaceScript : MonoBehaviour
             Debug.Log("Face hit multiple cubes", transform.parent.gameObject);
         if (checklist.Length > 0)
             gameObject.SetActive(false);//face hit at least 1 cube so disable it (and therefore it's childs
+        if (faceType == FaceType.BLOCK)
+        { //neccesary? all this really does is make itunleavable
+            gameObject.SetActive(false);
+        }
         myCube = transform.parent.gameObject.GetComponent<CubeScript>();
     }
 
     public CubeScript.dirs GetMoveDir(CubeScript.dirs facing)
     {
         FaceScript target = GetFaceInDir(facing);
-        if(target.sourcedir == sourcedir)
+        if (target.sourcedir == sourcedir)
         {
             return facing;
         }
-        if(target.sourcedir == facing)
+        if (target.sourcedir == facing)
         {
             //wrap around
             return myCube.OppositeDir(sourcedir);
@@ -51,7 +64,7 @@ public class FaceScript : MonoBehaviour
     {
         //Awake is called when the scene loads, start is called before the first frame if the object is enabled
         //I need to assign the facechecker directions after this gets it's direction from the cube script, so I do that now
-        switch(sourcedir)
+        switch (sourcedir)
         {
             case CubeScript.dirs.BACK:
                 north.direction = CubeScript.dirs.UP;
@@ -165,13 +178,29 @@ public class FaceScript : MonoBehaviour
     public FaceScript GetFaceInDir(CubeScript.dirs facing)
     {
         if (facing == nDir)
+        {
+            if (faceNorth.faceType == FaceType.BLOCK)
+                return null;
             return faceNorth;
+        }
         if (facing == sDir)
+        {
+            if (faceSouth.faceType == FaceType.BLOCK)
+                return null;
             return faceSouth;
+        }
         if (facing == eDir)
+        {
+            if (faceEast.faceType == FaceType.BLOCK)
+                return null;
             return faceEast;
+        }
         if (facing == wDir)
+        {
+            if (faceWest.faceType == FaceType.BLOCK)
+                return null;
             return faceWest;
+        }
         return null;
     }
 }
