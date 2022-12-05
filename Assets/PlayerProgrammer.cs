@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerProgrammer : MonoBehaviour
 {
     public bool proceed = false;
-
+    
 
     private enum codes
     {

@@ -12,7 +12,37 @@ public class PlayerMovement : MonoBehaviour
     public int numberOfSteps = 1; //number of frames it takes to complete movement, 1 is instant framerate is 1 second
     [SerializeField] private float moveHeight;
     private PlayerProgrammer prog;
+
     // Start is called before the first frame update
+
+    public bool playtest = true;
+
+    private void Awake()
+    {
+        prog = FindObjectOfType<PlayerProgrammer>();
+    }
+
+    private void Update()
+    {
+        if(playtest && prog.proceed)
+        {
+            if(Input.GetKeyDown(KeyCode.W))
+            {
+                prog.proceed = false;
+                MovePlayer();
+            }
+            else if (Input.GetKeyDown(KeyCode.A))
+            {
+                prog.proceed = false;
+                TurnPlayerLeft();
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                prog.proceed = false;
+                TurnPlayerRight();
+            }
+        }
+    }
 
     public void MovePlayer()
     {
@@ -60,12 +90,21 @@ public class PlayerMovement : MonoBehaviour
         int tempSteps = numberOfSteps;
         for(int i = 0; i < tempSteps; i++)
         {
-            float div = 1f / ((float)tempSteps);
+            float div = i / ((float)tempSteps);
+            float tempHeight = moveHeight * Mathf.Sin(i / ((float)tempSteps) * Mathf.PI);
             transform.position = Vector3.Lerp(currentPos,targetPos,div);
+            Vector3 heightadjust = transform.up * tempHeight;
+            transform.localPosition += heightadjust;
             //this is the part where the arc needs defining
             transform.rotation = Quaternion.Slerp(currentRot, targetRot, div);
             yield return null;
         }
+        transform.position = targetPos;
+        transform.rotation = targetRot;
+        standing = targetFace;
+        facing = targetDir;
+
+
         prog.proceed = true;
     }
 
