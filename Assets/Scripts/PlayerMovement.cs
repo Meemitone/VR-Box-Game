@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public int numberOfSteps = 1; //number of frames it takes to complete movement, 1 is instant framerate is 1 second
     public float stepTime = 0.5f;//amount of time to make a step
     [SerializeField] private float moveHeight;
+    private float RMH;
     public PlayerProgrammer prog;
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         prog = FindObjectOfType<PlayerProgrammer>();
+        RMH = moveHeight;
     }
 
     private void Update()
@@ -67,8 +69,6 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(Resolve(true));
     }
 
-    
-
     public void TurnPlayerRight()//clockwise
     {
         targetFace = standing;
@@ -78,8 +78,40 @@ public class PlayerMovement : MonoBehaviour
 
     public void ActivateSpace()
     {
-        prog.proceed = true;
-        Debug.Log("activate space needs to be written");
+
+        switch(standing.faceT)
+        {
+            case FaceScript.FaceType.SPRING: //move 2 spaces at once
+                CubeScript.dirs tempdir = facing;
+                FaceScript tempface = standing;
+                if (tempface.GetFaceInDir(tempdir) == null)
+                {
+                    prog.proceed = true;//can't jump over a block, therefore, can't jump
+                    return;
+                }
+                else
+                {
+                    tempface = tempface.GetFaceInDir(tempdir);
+                    tempdir = tempface.GetMoveDir(tempdir); //we have the next face, now we face the nexter face
+                    if (tempface.GetFaceInDir(tempdir) == null)
+                    {
+                        prog.proceed = true;//if the nexter face is a block, can't jump
+                        return;
+                    }
+                    else
+                    {
+                        targetFace = tempface.GetFaceInDir(tempdir);
+                        targetDir = tempface.GetMoveDir(tempdir);
+                        moveHeight *= 2; //increase the hop height so that the bound is smoother
+                        StartCoroutine(Resolve(true));
+                    }
+                }
+                break;
+            default:
+                prog.proceed = true;
+                Debug.Log("ActivateSpace fell out of it's switch (is the space interactable and is the code for it written?)");
+                break;
+        }
     }
 
     public void Cease(FaceScript resetFace, CubeScript.dirs resetDir)
@@ -130,7 +162,7 @@ public class PlayerMovement : MonoBehaviour
         transform.rotation = targetRot;
         standing = targetFace;
         facing = targetDir;
-
+        moveHeight = RMH;
         if(targetFace.Enter(this))
         {
             StartCoroutine(Resolve(false));

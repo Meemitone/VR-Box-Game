@@ -4,18 +4,7 @@ using UnityEngine;
 
 public class CodeSegment : MonoBehaviour
 {
-    public CodeSegment nextCode;
+    public CodeSegment Next;
+    public CodeSegment Prev;
     public PlayerProgrammer.codes code;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

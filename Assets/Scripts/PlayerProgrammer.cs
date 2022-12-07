@@ -8,18 +8,21 @@ public class PlayerProgrammer : MonoBehaviour
     private PlayerMovement player;
     public FaceScript resetFace;
     public CubeScript.dirs resetDir;
-    CodeSegment listFirst;
-    CodeSegment currentCode;
-    CodeSegment listLast;
+    private CodeSegment listFirst;
+    private CodeSegment currentCode;
+    private CodeSegment listLast;
+    public GameObject indexMarker;
+    public GameObject UIMenu;
     public bool allowCode = true;
+    public int currentIndex = 0; //0 is before the first segment (this is where the type line is)
 
     public GameObject codeMove, codeLeft, codeRight, codeUse;
     public enum codes
     {
         STEP,
-        LEFT, 
-        RIGHT, 
-        USE, 
+        LEFT,
+        RIGHT,
+        USE,
         END
     }
 
@@ -33,13 +36,14 @@ public class PlayerProgrammer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        indexMarker.transform.SetParent(UIMenu.transform);
+        UIUpdate();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(proceed)
+        if (proceed)
         {
             proceed = false;
             if (currentCode == null)
@@ -68,7 +72,7 @@ public class PlayerProgrammer : MonoBehaviour
             }
             else
                 return;
-            currentCode = currentCode.nextCode;
+            currentCode = currentCode.Next;
         }
     }
 
@@ -79,7 +83,7 @@ public class PlayerProgrammer : MonoBehaviour
 
         GameObject newCode = null;
         codes code = (codes)codenum;
-        switch(code)
+        switch (code)
         {
             case codes.STEP:
                 newCode = Instantiate(codeMove);
@@ -109,14 +113,97 @@ public class PlayerProgrammer : MonoBehaviour
             }
             else
             {
-                listLast.nextCode = newCode.GetComponent<CodeSegment>();
-                listLast = listLast.nextCode;
+                listLast.Next = newCode.GetComponent<CodeSegment>();
+                newCode.GetComponent<CodeSegment>().Prev = listLast;
+                listLast = listLast.Next;
             }
         }
 
+        newCode.transform.SetParent(UIMenu.transform);
+
+        UIUpdate();
+    }
+
+    public void Clear()
+    {
+        CodeSegment clearcurr = listFirst;
+        while (clearcurr != null)
         {
-            //Kate add in transform update
+            CodeSegment tempNext = clearcurr.Next;
+            Destroy(clearcurr.gameObject);
+            clearcurr = tempNext;
         }
+        listFirst = null;
+        listLast = null;
+        UIUpdate();
+    }
+
+    public void Remove()
+    {
+        int index = currentIndex;
+        //remove a specific command by index
+        if (index <= 0 || index > Count())
+        {
+            currentIndex = 0;//we shouldn't get here but just in case it gets out of the range somehow
+            return;
+        }
+        CodeSegment holder = listFirst;
+        for (int i = 1; i < index; i++)
+        {
+            holder = holder.Next;
+        }
+
+        CodeSegment tempNext = holder.Next;
+        CodeSegment tempPrev = holder.Prev;
+        tempNext.Prev = tempPrev;
+        tempPrev.Next = tempNext;
+        if (index == 1)
+        {
+            listFirst = tempNext;
+        }
+        if (index == Count())
+        {
+            listLast = tempPrev;
+        }
+
+        Destroy(holder.gameObject);
+
+        UIUpdate();
+    }
+
+    public int Count()
+    {
+        CodeSegment holder = listFirst;
+        int count = 0;
+        while (holder != null)
+        {
+            count++;
+            holder = holder.Next;
+        }
+        return count;
+    }
+
+    public void IndexUp()
+    {
+        if (currentIndex < Count())
+        {
+            currentIndex++;
+            UIUpdate();
+        }
+    }
+
+    public void IndexDown()
+    {
+        if (currentIndex > 0)
+        {
+            currentIndex--;
+            UIUpdate();
+        }
+    }
+
+    public void UIUpdate()
+    {
+        //rearrange the CodeSegment Objects to form the layout of the UI, along with inserting the text editor flashing | thing at currentIndex
     }
 
     public void RunStop()

@@ -210,18 +210,27 @@ public class FaceScript : MonoBehaviour
 
     public bool Enter(PlayerMovement player)
     {
-        switch(faceT)
+        switch (faceT)
         {
             case FaceType.CHECK:
                 if (player.prog.resetFace != this)
                 {
                     if (sourcedir != CubeScript.dirs.FOREWARD && sourcedir != CubeScript.dirs.BACK)
+                    {
                         player.Cease(this, CubeScript.dirs.FOREWARD);
+                        player.prog.resetDir = CubeScript.dirs.FOREWARD;
+                    }
                     else
+                    {
                         player.Cease(this, CubeScript.dirs.UP);
+                        player.prog.resetDir = CubeScript.dirs.UP;
+                    }
                     player.prog.resetFace = this;
                     return true;
                 }
+                break;
+            case FaceType.KILL:
+                player.Cease(player.prog.resetFace, player.prog.resetDir);
                 break;
             default:
                 return false;
