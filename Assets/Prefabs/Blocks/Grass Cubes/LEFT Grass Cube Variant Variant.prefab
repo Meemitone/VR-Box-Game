@@ -17,10 +17,15 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2531745421462895963, guid: dd0a66cc14825034eb99615ba359541a,
+        type: 3}
+      propertyPath: faceT
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3367340565442722636, guid: dd0a66cc14825034eb99615ba359541a,
         type: 3}
       propertyPath: m_Name
-      value: LEFT Dirt Cube Variant Variant
+      value: LEFT Grass Cube Variant Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3367340565442722640, guid: dd0a66cc14825034eb99615ba359541a,
         type: 3}
@@ -99,7 +104,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4422631887175831211, guid: dd0a66cc14825034eb99615ba359541a,
         type: 3}
+      propertyPath: faceT
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4422631887175831211, guid: dd0a66cc14825034eb99615ba359541a,
+        type: 3}
       propertyPath: faceType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530194560626158944, guid: dd0a66cc14825034eb99615ba359541a,
+        type: 3}
+      propertyPath: faceT
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6668139370371748236, guid: dd0a66cc14825034eb99615ba359541a,
@@ -167,6 +182,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7417660099423264031, guid: dd0a66cc14825034eb99615ba359541a,
+        type: 3}
+      propertyPath: faceT
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7732194493526648814, guid: dd0a66cc14825034eb99615ba359541a,
         type: 3}
       propertyPath: m_Mesh
@@ -174,8 +194,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7824809985129445455, guid: dd0a66cc14825034eb99615ba359541a,
         type: 3}
+      propertyPath: faceT
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7824809985129445455, guid: dd0a66cc14825034eb99615ba359541a,
+        type: 3}
       propertyPath: faceType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8277349845561645419, guid: dd0a66cc14825034eb99615ba359541a,
+        type: 3}
+      propertyPath: faceT
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd0a66cc14825034eb99615ba359541a, type: 3}
