@@ -104,7 +104,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3358470691632644490, guid: 609a5e62f9ed7f94898e5aa239e32456,
         type: 3}
+      propertyPath: faceT
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358470691632644490, guid: 609a5e62f9ed7f94898e5aa239e32456,
+        type: 3}
       propertyPath: faceType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3519956751941710458, guid: 609a5e62f9ed7f94898e5aa239e32456,
+        type: 3}
+      propertyPath: faceT
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3519956751941710458, guid: 609a5e62f9ed7f94898e5aa239e32456,
@@ -114,7 +124,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3704005856636965297, guid: 609a5e62f9ed7f94898e5aa239e32456,
         type: 3}
+      propertyPath: faceT
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3704005856636965297, guid: 609a5e62f9ed7f94898e5aa239e32456,
+        type: 3}
       propertyPath: faceType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7002659237558387870, guid: 609a5e62f9ed7f94898e5aa239e32456,
+        type: 3}
+      propertyPath: faceT
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7002659237558387870, guid: 609a5e62f9ed7f94898e5aa239e32456,
@@ -129,7 +149,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7730970611406676430, guid: 609a5e62f9ed7f94898e5aa239e32456,
         type: 3}
+      propertyPath: faceT
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730970611406676430, guid: 609a5e62f9ed7f94898e5aa239e32456,
+        type: 3}
       propertyPath: faceType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9180081603689407930, guid: 609a5e62f9ed7f94898e5aa239e32456,
+        type: 3}
+      propertyPath: faceT
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9180081603689407930, guid: 609a5e62f9ed7f94898e5aa239e32456,

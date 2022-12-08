@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 521970035553569611, guid: d79dc56225df51f448fbc9f73b5530e4,
+        type: 3}
+      propertyPath: faceT
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 767806081168313664, guid: d79dc56225df51f448fbc9f73b5530e4,
         type: 3}
       propertyPath: m_RootOrder
@@ -65,7 +70,17 @@ PrefabInstance:
     - target: {fileID: 767806081168313692, guid: d79dc56225df51f448fbc9f73b5530e4,
         type: 3}
       propertyPath: m_Name
-      value: Right/Left Cube
+      value: Right_Left Dirt Cube Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836520541385373883, guid: d79dc56225df51f448fbc9f73b5530e4,
+        type: 3}
+      propertyPath: faceT
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1928246545116994416, guid: d79dc56225df51f448fbc9f73b5530e4,
+        type: 3}
+      propertyPath: faceT
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2620376078362303524, guid: d79dc56225df51f448fbc9f73b5530e4,
         type: 3}
@@ -82,10 +97,25 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4822277095640247055, guid: d79dc56225df51f448fbc9f73b5530e4,
+        type: 3}
+      propertyPath: faceT
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227472788809584223, guid: d79dc56225df51f448fbc9f73b5530e4,
+        type: 3}
+      propertyPath: faceT
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5715837703861752318, guid: d79dc56225df51f448fbc9f73b5530e4,
         type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6252109139397570427, guid: d79dc56225df51f448fbc9f73b5530e4,
+        type: 3}
+      propertyPath: faceT
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7011301761566845064, guid: d79dc56225df51f448fbc9f73b5530e4,
         type: 3}

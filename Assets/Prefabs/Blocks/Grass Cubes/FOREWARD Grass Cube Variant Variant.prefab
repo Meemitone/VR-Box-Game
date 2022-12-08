@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: 3367340565442722636, guid: dd0a66cc14825034eb99615ba359541a,
         type: 3}
       propertyPath: m_Name
-      value: FOREWARD Dirt Cube Variant Variant
+      value: FOREWARD Grass Cube Variant Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3367340565442722640, guid: dd0a66cc14825034eb99615ba359541a,
         type: 3}
@@ -161,6 +161,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_VersionIndex
       value: 4729
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417660099423264031, guid: dd0a66cc14825034eb99615ba359541a,
+        type: 3}
+      propertyPath: faceT
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7417660099423264031, guid: dd0a66cc14825034eb99615ba359541a,
         type: 3}
