@@ -64773,4 +64773,5 @@ MonoBehaviour:
   stepTime: 0.5
   moveHeight: 1
   prog: {fileID: 0}
+  anim: {fileID: 7162502882120765700}
   playtest: 1
