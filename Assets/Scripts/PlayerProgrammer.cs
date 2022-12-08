@@ -273,6 +273,7 @@ public class PlayerProgrammer : MonoBehaviour
         {
             proceed = true;
             allowCode = false;
+            currentCode = listFirst;
             return;
         }
 
