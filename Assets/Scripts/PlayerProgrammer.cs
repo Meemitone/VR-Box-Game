@@ -125,7 +125,7 @@ public class PlayerProgrammer : MonoBehaviour
         }
 
         newCode.transform.SetParent(UIMenu.transform);
-
+        currentIndex++;
         UIUpdate();
     }
 
@@ -140,6 +140,7 @@ public class PlayerProgrammer : MonoBehaviour
         }
         listFirst = null;
         listLast = null;
+        currentIndex = 0;
         UIUpdate();
     }
 
@@ -153,15 +154,19 @@ public class PlayerProgrammer : MonoBehaviour
             return;
         }
         CodeSegment holder = listFirst;
+        //Debug.Log("index: " + index);
         for (int i = 1; i < index; i++)
         {
             holder = holder.Next;
+            //Debug.Log("i: " + i);
         }
 
         CodeSegment tempNext = holder.Next;
         CodeSegment tempPrev = holder.Prev;
+        if(tempNext!=null)
         tempNext.Prev = tempPrev;
-        tempPrev.Next = tempNext;
+        if (tempPrev != null)
+            tempPrev.Next = tempNext;
         if (index == 1)
         {
             listFirst = tempNext;
@@ -170,9 +175,9 @@ public class PlayerProgrammer : MonoBehaviour
         {
             listLast = tempPrev;
         }
-
+        //Debug.Log("About to Delete");
         Destroy(holder.gameObject);
-
+        currentIndex--;
         UIUpdate();
     }
 
@@ -222,7 +227,20 @@ public class PlayerProgrammer : MonoBehaviour
         }
         indexMarker.transform.localPosition += right * rightShift + down * downShift;
 
-
+        right = 0;
+        down = 0;
+        CodeSegment T = listFirst;
+        while(T!=null)
+        {
+            T.gameObject.transform.localPosition = codeZero + right * rightShift + down * downShift;
+            right++;
+            if(right % 8 == 0)
+            {
+                right -= 8;
+                down++;
+            }
+            T = T.Next;
+        }
         //rearrange the CodeSegment Objects to form the layout of the UI, along with inserting the text editor flashing | thing at currentIndex
     }
 
