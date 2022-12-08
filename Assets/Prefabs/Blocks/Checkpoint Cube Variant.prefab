@@ -110,7 +110,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2846001647905912497}
+    m_TransformParent: {fileID: 4388154800775777991}
     m_Modifications:
     - target: {fileID: 1668360474294179881, guid: fb2d4ebb299ef344c853ce5c07b44fc2,
         type: 3}
@@ -140,7 +140,7 @@ PrefabInstance:
     - target: {fileID: 1668360474819958190, guid: fb2d4ebb299ef344c853ce5c07b44fc2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1668360474819958190, guid: fb2d4ebb299ef344c853ce5c07b44fc2,
         type: 3}
@@ -428,3 +428,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a90533c2a9b61647baee6fbe192c8f2, type: 3}
+--- !u!4 &4388154800775777991 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6643460189251931300, guid: 8a90533c2a9b61647baee6fbe192c8f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 6978209275934261859}
+  m_PrefabAsset: {fileID: 0}

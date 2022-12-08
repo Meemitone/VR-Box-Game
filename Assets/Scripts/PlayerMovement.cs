@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveHeight;
     private float RMH;
     public PlayerProgrammer prog;
+    public Animator anim;
 
     // Start is called before the first frame update
 
@@ -124,6 +125,8 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Resolve(bool maintain)
     {
+        
+        
         Vector3 currentPos = transform.position;
         Vector3 targetPos = targetFace.transform.position;
         Quaternion currentRot = transform.rotation;
@@ -145,6 +148,9 @@ public class PlayerMovement : MonoBehaviour
         */
         float tempTime = stepTime;
         float currentTime = 0;
+        
+        anim.SetBool("Jump",true);
+        
         while(currentTime<tempTime)
         {
             currentTime += Time.deltaTime;
@@ -157,6 +163,7 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
 
+        anim.SetBool("Jump",false);
 
         transform.position = targetPos;
         transform.rotation = targetRot;
