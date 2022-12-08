@@ -30,17 +30,17 @@ PrefabInstance:
     - target: {fileID: 2522592105603172225, guid: 609a5e62f9ed7f94898e5aa239e32456,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.451
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2522592105603172225, guid: 609a5e62f9ed7f94898e5aa239e32456,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0125002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2522592105603172225, guid: 609a5e62f9ed7f94898e5aa239e32456,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.777
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2522592105603172225, guid: 609a5e62f9ed7f94898e5aa239e32456,
         type: 3}
@@ -80,7 +80,7 @@ PrefabInstance:
     - target: {fileID: 2522592105603172253, guid: 609a5e62f9ed7f94898e5aa239e32456,
         type: 3}
       propertyPath: m_Name
-      value: UP Dirt Cube Variant
+      value: UP Grass Cube Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3358470691632644490, guid: 609a5e62f9ed7f94898e5aa239e32456,
         type: 3}
@@ -181,16 +181,6 @@ PrefabInstance:
     - target: {fileID: 2971222003647006165, guid: 3e2984a96736f894584feeae72b5e9da,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2971222003647006165, guid: 3e2984a96736f894584feeae72b5e9da,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2971222003647006165, guid: 3e2984a96736f894584feeae72b5e9da,
-        type: 3}
-      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2971222003647006165, guid: 3e2984a96736f894584feeae72b5e9da,

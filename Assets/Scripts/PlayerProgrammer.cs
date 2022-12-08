@@ -43,7 +43,7 @@ public class PlayerProgrammer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (proceed)
+        if (proceed && !player.playtest)
         {
             proceed = false;
             if (currentCode == null)

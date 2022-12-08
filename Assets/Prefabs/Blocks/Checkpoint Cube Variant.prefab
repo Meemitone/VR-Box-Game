@@ -80,7 +80,12 @@ PrefabInstance:
     - target: {fileID: 2522592105603172253, guid: 609a5e62f9ed7f94898e5aa239e32456,
         type: 3}
       propertyPath: m_Name
-      value: Checkpoint Cube
+      value: Checkpoint Cube Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3519956751941710458, guid: 609a5e62f9ed7f94898e5aa239e32456,
+        type: 3}
+      propertyPath: faceT
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3519956751941710458, guid: 609a5e62f9ed7f94898e5aa239e32456,
         type: 3}
@@ -130,7 +135,7 @@ PrefabInstance:
     - target: {fileID: 1668360474819958189, guid: fb2d4ebb299ef344c853ce5c07b44fc2,
         type: 3}
       propertyPath: m_Name
-      value: Checkpoint FLag
+      value: Checkpoint Flag
       objectReference: {fileID: 0}
     - target: {fileID: 1668360474819958190, guid: fb2d4ebb299ef344c853ce5c07b44fc2,
         type: 3}

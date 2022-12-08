@@ -11,7 +11,6 @@ public class FaceScript : MonoBehaviour
     private int CubeLayer = 1 << 6;//this is the layer that cubes are on, the faces occupy layer 7
     [SerializeField] private FaceCheckerScript north, south, east, west; //these are the face checkers
     public CubeScript.dirs sourcedir;
-    private CubeScript.dirs checkDir;
 
     public CubeScript.dirs nDir, sDir, eDir, wDir;
     public CubeScript myCube;
@@ -70,11 +69,12 @@ public class FaceScript : MonoBehaviour
         //I need to assign the facechecker directions after this gets it's direction from the cube script, so I do that now
         switch (sourcedir)
         {
+            //this might need updating when rotation happens
             case CubeScript.dirs.BACK:
                 north.direction = CubeScript.dirs.UP;
                 south.direction = CubeScript.dirs.DOWN;
                 east.direction = CubeScript.dirs.RIGHT;
-                west.direction = CubeScript.dirs.LEFT;
+                west.direction = CubeScript.dirs.LEFT; 
                 break;
             case CubeScript.dirs.UP:
                 north.direction = CubeScript.dirs.FOREWARD;
