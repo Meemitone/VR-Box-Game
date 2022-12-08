@@ -14,8 +14,8 @@ public class FaceCheckerScript : MonoBehaviour
     {
         cubeMask = LayerMask.GetMask("Cubes");
         faceMask = LayerMask.GetMask("Faces");
-        cubeOverlaps = Physics.OverlapSphere(transform.position, 0.01f, cubeMask, QueryTriggerInteraction.Collide);
-        faceOverlaps = Physics.OverlapSphere(transform.position, 0.01f, faceMask, QueryTriggerInteraction.Collide);
+        cubeOverlaps = Physics.OverlapSphere(transform.position, 0.001f, cubeMask, QueryTriggerInteraction.Collide);
+        faceOverlaps = Physics.OverlapSphere(transform.position, 0.001f, faceMask, QueryTriggerInteraction.Collide);
         if (cubeOverlaps.Length > 0)
         {
             if (cubeOverlaps.Length > 1)

@@ -27,7 +27,7 @@ public class FaceScript : MonoBehaviour
     public void doAwake()
     {
         //check if this face is inside a cube, if so, then it can't be traversed 
-        Collider[] checklist = Physics.OverlapSphere(transform.position, 0.01f, CubeLayer, QueryTriggerInteraction.Collide);
+        Collider[] checklist = Physics.OverlapSphere(transform.position, 0.001f, CubeLayer, QueryTriggerInteraction.Collide);
         if (checklist.Length > 1)
             Debug.Log("Face hit multiple cubes", transform.parent.gameObject);
         if (checklist.Length > 0)
