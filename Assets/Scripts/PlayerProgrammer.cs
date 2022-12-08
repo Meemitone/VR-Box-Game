@@ -108,7 +108,7 @@ public class PlayerProgrammer : MonoBehaviour
 
         if (newCode == null)
             return;
-
+        newCode.transform.rotation = UIMenu.transform.rotation;
         {
             //Make the new code link up
             if (listFirst == null)
@@ -118,9 +118,25 @@ public class PlayerProgrammer : MonoBehaviour
             }
             else
             {
+                CodeSegment indexed = getByIndex(currentIndex);
+                if (indexed.Next == null)
+                {
+                    listLast = newCode.GetComponent<CodeSegment>();
+                    indexed.Next = newCode.GetComponent<CodeSegment>();
+                    indexed.Next.Prev = indexed;
+                }
+                else
+                {
+                    newCode.GetComponent<CodeSegment>().Next = indexed.Next;
+                    newCode.GetComponent<CodeSegment>().Prev = indexed;
+                    indexed.Next.Prev = newCode.GetComponent<CodeSegment>();
+                    indexed.Next = newCode.GetComponent<CodeSegment>();
+                }
+                /*
                 listLast.Next = newCode.GetComponent<CodeSegment>();
                 newCode.GetComponent<CodeSegment>().Prev = listLast;
                 listLast = listLast.Next;
+                */
             }
         }
 
@@ -131,6 +147,8 @@ public class PlayerProgrammer : MonoBehaviour
 
     public void Clear()
     {
+        if (!allowCode)
+            return;
         CodeSegment clearcurr = listFirst;
         while (clearcurr != null)
         {
@@ -146,6 +164,8 @@ public class PlayerProgrammer : MonoBehaviour
 
     public void Remove()
     {
+        if (!allowCode)
+            return;
         int index = currentIndex;
         //remove a specific command by index
         if (index <= 0 || index > Count())
@@ -260,5 +280,20 @@ public class PlayerProgrammer : MonoBehaviour
 
         player.Cease(resetFace, resetDir);
         allowCode = true;
+    }
+    
+    private CodeSegment getByIndex(int index)
+    {
+        if(index == 0)
+        return null;
+        CodeSegment holder = listFirst;
+        //Debug.Log("index: " + index);
+        for (int i = 1; i < index; i++)
+        {
+            if(holder.Next!=null)
+            holder = holder.Next;
+            //Debug.Log("i: " + i);
+        }
+        return holder;
     }
 }
