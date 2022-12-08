@@ -16,6 +16,11 @@ public class PlayerProgrammer : MonoBehaviour
     public bool allowCode = true;
     public int currentIndex = 0; //0 is before the first segment (this is where the type line is)
 
+    public Vector3 indexZero;
+    public Vector3 codeZero;
+    public Vector3 rightShift;
+    public Vector3 downShift;
+
     public GameObject codeMove, codeLeft, codeRight, codeUse;
     public enum codes
     {
@@ -203,6 +208,21 @@ public class PlayerProgrammer : MonoBehaviour
 
     public void UIUpdate()
     {
+        indexMarker.transform.localPosition = indexZero;
+        int right = 0;
+        int down = 0;
+        if(currentIndex>0)
+        {
+            right = currentIndex % 8;
+            if (right == 0)
+                right = 8;
+            down = currentIndex / 8;
+            if (right == 8)
+                down--;
+        }
+        indexMarker.transform.localPosition += right * rightShift + down * downShift;
+
+
         //rearrange the CodeSegment Objects to form the layout of the UI, along with inserting the text editor flashing | thing at currentIndex
     }
 

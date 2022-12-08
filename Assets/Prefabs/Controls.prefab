@@ -47,7 +47,14 @@ MonoBehaviour:
   proceed: 1
   resetFace: {fileID: 0}
   resetDir: 0
+  indexMarker: {fileID: 0}
+  UIMenu: {fileID: 0}
   allowCode: 1
+  currentIndex: 0
+  indexZero: {x: -0.4, y: 0.35, z: -0.01}
+  codeZero: {x: -0.34999996, y: 0.35, z: -0.01}
+  rightShift: {x: 0.1, y: 0, z: 0}
+  downShift: {x: 0, y: -0.1, z: 0}
   codeMove: {fileID: 8548318157885039634, guid: 9636783243af6234f97f9bbb32107fcf,
     type: 3}
   codeLeft: {fileID: 8978419824053563073, guid: 973f01869279eb149aa3f542a54df27d,
