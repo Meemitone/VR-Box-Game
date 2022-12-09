@@ -215,17 +215,17 @@ public class FaceScript : MonoBehaviour
             case FaceType.CHECK:
                 if (player.prog.resetFace != this)
                 {
+                    player.prog.resetFace = this;
                     if (sourcedir != CubeScript.dirs.FOREWARD && sourcedir != CubeScript.dirs.BACK)
                     {
-                        player.Cease(this, CubeScript.dirs.FOREWARD);
                         player.prog.resetDir = CubeScript.dirs.FOREWARD;
+                        player.prog.RunStop();
                     }
                     else
                     {
-                        player.Cease(this, CubeScript.dirs.UP);
                         player.prog.resetDir = CubeScript.dirs.UP;
+                        player.prog.RunStop();
                     }
-                    player.prog.resetFace = this;
                     return true;
                 }
                 break;
