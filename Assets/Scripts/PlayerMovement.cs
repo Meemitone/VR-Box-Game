@@ -149,8 +149,11 @@ public class PlayerMovement : MonoBehaviour
         float tempTime = stepTime;
         float currentTime = 0;
         
+        if(anim.GetBool("Inverse")){anim.SetBool("Inverse",false);}
+        else
+        { anim.SetBool("Inverse",true); }
         anim.SetBool("Jump",true);
-        
+
         while(currentTime<tempTime)
         {
             currentTime += Time.deltaTime;
