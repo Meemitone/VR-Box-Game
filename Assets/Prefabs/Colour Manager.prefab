@@ -75,6 +75,6 @@ MonoBehaviour:
   PlayerHue: 240
   InteractHue: 86
   BackgroundHue: 0
-  valueChange: 150
+  valueChange: 100
   doColour: 0
   blind: 0
