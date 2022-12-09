@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator anim;
 
     // Start is called before the first frame update
-
+    [Tooltip("Hit this for playtest wasd controls, also hit proceed in playerProgrammer")]
     public bool playtest = true;
 
     private void Awake()
@@ -149,10 +149,10 @@ public class PlayerMovement : MonoBehaviour
         float tempTime = stepTime;
         float currentTime = 0;
         
+        anim.SetBool("Jump",true);
         if(anim.GetBool("Inverse")){anim.SetBool("Inverse",false);}
         else
         { anim.SetBool("Inverse",true); }
-        anim.SetBool("Jump",true);
 
         while(currentTime<tempTime)
         {

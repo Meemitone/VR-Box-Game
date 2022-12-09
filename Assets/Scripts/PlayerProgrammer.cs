@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerProgrammer : MonoBehaviour
 {
+    [Tooltip("Hit this for playtest wasd controls, also hit playtest in playerMovement")]
     public bool proceed = false;
     private PlayerMovement player;
     public FaceScript resetFace;
