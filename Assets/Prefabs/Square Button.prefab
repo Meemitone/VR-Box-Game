@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5736137711837467998}
   - component: {fileID: 5164299012583676078}
   - component: {fileID: 551151823568097702}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9007362051211350608}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 9007362051556197331}
   - component: {fileID: 9007362051556197332}
   - component: {fileID: 9007362051556197333}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 9007362051862580554}
   - component: {fileID: 9007362051862580552}
   - component: {fileID: 9007362051862580553}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 9007362052318708756}
   - component: {fileID: 9007362052318708757}
   - component: {fileID: 9007362052318708758}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pusher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,7 +419,7 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LinearLimit:
-    limit: 0.017
+    limit: 0.2
     bounciness: 0
     contactDistance: 0
   m_AngularXLimitSpring:
@@ -502,8 +502,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41781c26ae1b30c49855948dd8ae3223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshold: 0.1
-  deadZone: 0
+  threshold: 0.5
+  deadZone: 0.2
   onPressed:
     m_PersistentCalls:
       m_Calls:
