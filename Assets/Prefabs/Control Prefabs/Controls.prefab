@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1501556321469797756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1501556321469797758}
+  - component: {fileID: 1501556321469797757}
+  m_Layer: 0
+  m_Name: Controls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1501556321469797758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501556321469797756}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.570516, y: 3.6290755, z: 2.9446056}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1501556321469797757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501556321469797756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7408963cbd25b444ab9eefcf9074bcc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  proceed: 1
+  resetFace: {fileID: 0}
+  resetDir: 0
+  indexMarker: {fileID: 0}
+  UIMenu: {fileID: 0}
+  allowCode: 1
+  currentIndex: 0
+  indexZero: {x: -0.4, y: 0.35, z: -0.01}
+  codeZero: {x: -0.34999996, y: 0.35, z: -0.01}
+  rightShift: {x: 0.1, y: 0, z: 0}
+  downShift: {x: 0, y: -0.1, z: 0}
+  codeMove: {fileID: 8548318157885039634, guid: 9636783243af6234f97f9bbb32107fcf,
+    type: 3}
+  codeLeft: {fileID: 8978419824053563073, guid: 973f01869279eb149aa3f542a54df27d,
+    type: 3}
+  codeRight: {fileID: 7299362430089759230, guid: e439c87eca3071642b6bd0a0101050b7,
+    type: 3}
+  codeUse: {fileID: 9115269883440122451, guid: 68001527903948941871aeb0f45adb34, type: 3}

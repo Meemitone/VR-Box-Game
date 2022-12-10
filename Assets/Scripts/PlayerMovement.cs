@@ -15,15 +15,27 @@ public class PlayerMovement : MonoBehaviour
     private float RMH;
     public PlayerProgrammer prog;
     public Animator anim;
+    public ColourManager Cmanager;
 
+    public GameObject VRCamera;
+    public GameObject WASDCamera;
+    
     // Start is called before the first frame update
-    [Tooltip("Hit this for playtest wasd controls, also hit proceed in playerProgrammer")]
-    public bool playtest = true;
+    [Header("This is for WASD playtesting")]
+    public bool playtest = false;
+    public bool changeColour = false;
 
     private void Awake()
     {
         prog = FindObjectOfType<PlayerProgrammer>();
+        Cmanager = FindObjectOfType<ColourManager>();
         RMH = moveHeight;
+        if (playtest) 
+        {
+            prog.proceed = true; // sets the proceed variable to true to avoid lengthy setups
+            WASDCamera.SetActive(true);
+            VRCamera.SetActive(false);
+        }
     }
 
     private void Update()
@@ -45,6 +57,12 @@ public class PlayerMovement : MonoBehaviour
                 prog.proceed = false;
                 TurnPlayerRight();
             }
+        }
+        
+        if (changeColour)
+        {
+            Cmanager.doColour = true; // sets the colour blind setting if this bool changes
+            changeColour = false;
         }
     }
 

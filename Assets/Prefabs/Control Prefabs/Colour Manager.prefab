@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4584093015093721410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4584093015093721408}
+  - component: {fileID: 4584093015093721411}
+  m_Layer: 0
+  m_Name: Colour Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4584093015093721408
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4584093015093721410}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.06420219, y: 1.2839848, z: -0.18678755}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4584093015093721411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4584093015093721410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b58eaae4cbb9a346933940f6dd7d81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentMaterials:
+  - {fileID: 2100000, guid: 5b502774a1a009540924e421576c4e2f, type: 2}
+  - {fileID: 2100000, guid: 624646e01e4ea6f4c856f353fba030e7, type: 2}
+  - {fileID: 2100000, guid: c7de9bd8d6de7fb48ba1ad45f10e0505, type: 2}
+  - {fileID: 2100000, guid: c7622f82ac4666745b789e4f224664cc, type: 2}
+  - {fileID: 2100000, guid: c54aa16d7d0b22f4bab889e500471c12, type: 2}
+  - {fileID: 2100000, guid: ff357e4c6c51f6f448237c500e5366e3, type: 2}
+  - {fileID: 2100000, guid: 3d2e36aacd7dc084b96e0755f1af4137, type: 2}
+  - {fileID: 2100000, guid: 9eff56d6fbdde9f43a30254861f3e4d1, type: 2}
+  - {fileID: 2100000, guid: cc73c5e910e8aa14cb054fb8cb6bd411, type: 2}
+  - {fileID: 2100000, guid: de328c4bf5fa0ec4c90282aad875cc31, type: 2}
+  - {fileID: 2100000, guid: 025ecea25e1246d4a8bc922466a4fa11, type: 2}
+  - {fileID: 2100000, guid: 51675d575ea415b428199a370eb04fa5, type: 2}
+  - {fileID: 2100000, guid: ff17adf63f55be7449421b3f59362434, type: 2}
+  StoredMaterials:
+  - {fileID: 2100000, guid: e4e5e2744cd0cfd418bdb536968ae15a, type: 2}
+  - {fileID: 2100000, guid: 31ad7bb32f6c6cc498f0cb8e5cee1b84, type: 2}
+  - {fileID: 2100000, guid: bcc48a7d4c36c7a48a69efa1d927ebf2, type: 2}
+  - {fileID: 2100000, guid: 477aeffe7505f6c438010690f407b6d4, type: 2}
+  - {fileID: 2100000, guid: 42115eabb9077b9449311a7e9a7cdc95, type: 2}
+  - {fileID: 2100000, guid: f80c93c001b470049b4d8a5a47e55335, type: 2}
+  - {fileID: 2100000, guid: 828c860f00b2a724783fb99801691269, type: 2}
+  - {fileID: 2100000, guid: 1a00573a5ff10b54095bf4fa04a3d603, type: 2}
+  - {fileID: 2100000, guid: 6b30147ab2caca24b965d151b1670c31, type: 2}
+  - {fileID: 2100000, guid: 676a35cb200aca447a25a268dded5778, type: 2}
+  - {fileID: 2100000, guid: 4d225fa4a518e9e4bb76b82dc041708f, type: 2}
+  - {fileID: 2100000, guid: b1e9c24ded745fe48af3102ece93b3ae, type: 2}
+  - {fileID: 2100000, guid: 9c23511dfef2e3147a7ca226897d6cb0, type: 2}
+  PlayerHue: 240
+  InteractHue: 86
+  BackgroundHue: 0
+  valueChange: 100
+  doColour: 0
+  blind: 0
