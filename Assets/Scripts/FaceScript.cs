@@ -49,7 +49,7 @@ public class FaceScript : MonoBehaviour
     {
         FaceScript target = GetFaceInDir(facing);
         if (target.sourcedir == sourcedir)
-        {
+        {//this doesn't work with the idea of rotated cubes
             return facing;
         }
         if (target.sourcedir == facing)
@@ -68,7 +68,7 @@ public class FaceScript : MonoBehaviour
     private void Start()
     {
         //Awake is called when the scene loads, start is called before the first frame if the object is enabled
-        //I need to assign the facechecker directions after this gets it's direction from the cube script, so I do that now
+        //I need to assign the facechecker directions after this gets it's direction from the cube script, so I do that now that awake has happened
         switch (sourcedir)
         {
             //this might need updating when rotation happens
