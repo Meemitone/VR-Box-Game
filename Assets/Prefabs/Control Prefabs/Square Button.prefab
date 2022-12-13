@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 9007362051862580552}
   - component: {fileID: 9007362051862580553}
   m_Layer: 8
-  m_Name: Face
+  m_Name: Push Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -5,8 +5,14 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    // Start is called before the first frame update
+    [Header("Changables")]
+    public bool playtest = false;
+    public bool changeColour = false;
     public CubeScript.dirs facing;//which way the player is facing
     public FaceScript standing;//the face the player is on
+    
+    [Header("\nDont fuck with these my guy")]
     public CubeScript.dirs targetDir;//which way the player is going to face next update
     private FaceScript targetFace;//the face the player will be on next update
     public int numberOfSteps = 1; //number of frames it takes to complete movement, 1 is instant framerate is 1 second
@@ -20,10 +26,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject VRCamera;
     public GameObject WASDCamera;
     
-    // Start is called before the first frame update
-    [Header("This is for WASD playtesting")]
-    public bool playtest = false;
-    public bool changeColour = false;
+
 
     private void Awake()
     {
@@ -149,6 +152,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 targetPos = targetFace.transform.position;
         Quaternion currentRot = transform.rotation;
         Quaternion targetRot = GetTargetRot();
+       /* if (targetRot == currentRot)
+        {
+            targetRot = Quaternion.LookRotation(targetFace.myCube.gameObject.transform.right, Vector3.up);
+        }
         /*
         {
             int tempSteps = numberOfSteps;
@@ -197,7 +204,7 @@ public class PlayerMovement : MonoBehaviour
             yield break;
         }
 
-        prog.proceed = maintain;
+        prog.proceed = maintain || playtest;
     }
 
     private Quaternion GetTargetRot()

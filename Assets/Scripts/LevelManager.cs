@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = System.Random;
 
 public class LevelManager : MonoBehaviour
@@ -12,6 +13,8 @@ public class LevelManager : MonoBehaviour
     
     [Header("Settings")]
     public bool StartAtSpawn;
+    public Vector3 moveInSpawn = new Vector3(0, -100, 0);
+    public Vector3 onyanSpawn = new Vector3(0, 3, 0);
     public float cubeMoveNum;
     public float inLerpFloat = 0.01f;
     public float inLerpTolorance = 0.0001f;
@@ -20,7 +23,6 @@ public class LevelManager : MonoBehaviour
     public float moveUpTime = 10;
     public float upCountSpeed = 0.2f;
     public float inCountSpeed = 0.2f;
-    public Vector3 moveInSpawn = new Vector3(0, -100, 0);
     
     [Header("Arrays")]
     public GameObject[] cubes;
@@ -29,11 +31,12 @@ public class LevelManager : MonoBehaviour
     public bool[] cubesMoveUp;
     public bool[] cubesMoveIn;
     public float[] cubesMoveSpeed;
-    
 
-    // Start is called before the first frame update
+    private GameObject player;
+    public int targetSceneIndex;
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         cubes = GameObject.FindGameObjectsWithTag("Cube");
         cubesSavedPos = new Vector3[cubes.Length];
         cubesActive = new bool[cubes.Length];
@@ -47,7 +50,6 @@ public class LevelManager : MonoBehaviour
             cubesMoveUp[I] = false;
             cubesMoveIn[I] = false;
             cubesMoveSpeed[I] = 0f;
-
         }
         
         // initialises the arrays
@@ -57,6 +59,9 @@ public class LevelManager : MonoBehaviour
         {
             cubesSavedPos[I] = cubes[I].transform.position; // saves the position of all of the cubes in the level
         }
+
+        player.transform.position = onyanSpawn; // moves the onyan to the player's head
+
         if (StartAtSpawn)
         {
             for (int I = 0; I < cubes.Length; I++)
@@ -69,14 +74,11 @@ public class LevelManager : MonoBehaviour
 
         upSpeedCap = moveUpAcceleration * moveUpTime * 100;
     }
-
-    // Update is called once per frame
     void Update()
     {
         if(moveThemIn && !moveThemUp) MoveEmIn();
         if(moveThemUp && !moveThemIn) MoveEmUp();
     }
-
     void MoveEmIn()
     {
         if (cubeMoveNum <= cubes.Length - 1)
@@ -108,11 +110,13 @@ public class LevelManager : MonoBehaviour
         {
             for (int I = 0; I < cubes.Length; I++) cubes[I].transform.position = cubesSavedPos[I];
             cubeMoveNum = 0;
+            player.GetComponent<PlayerMovement>().Cease(player.GetComponent<PlayerMovement>().prog.resetFace, player.GetComponent<PlayerMovement>().prog.resetDir); // Jump from the player's head to the spawn cube
             moveThemIn = false;
         }
     }
-    void MoveEmUp()
+    void MoveEmUp() // ----------------------------------------------------------------end level animation-------------------------------------------
     {
+
         if (cubeMoveNum <= cubes.Length - 1)
         {
             cubeMoveNum += upCountSpeed;
@@ -138,17 +142,17 @@ public class LevelManager : MonoBehaviour
                     cubes[I].transform.position += new Vector3(0, cubesMoveSpeed[I], 0); // else accelerate it upwards
                 }
             }
-        }
+        } // moves the cubes up
 
         if (cubesMoveSpeed[cubes.Length - 1] >= upSpeedCap) // if the last one is in place, stop doing the thing
         {
             cubesActive[cubes.Length - 1] = false;
             cubes[cubes.Length - 1].gameObject.SetActive(false);
             cubeMoveNum = 0;
-            moveThemUp = false;
+            moveThemUp = false; // finishes moving them up
+            SceneManager.LoadScene(targetSceneIndex); // loads the saved scene name
         }
-    }
-
+    } // ----------------------------------------------------------------end level animation-------------------------------------------
     void ArrayShuffle(GameObject[] array)
     {
         GameObject tempGO;
@@ -163,5 +167,17 @@ public class LevelManager : MonoBehaviour
             array[I] = tempGO; // sets this one to that random one, we have effectively swapped array[I] with array[rnd]
 
         }
+    }
+
+    public void WinLevel(int LVL)
+    {
+        targetSceneIndex = LVL;
+        moveThemUp = true;
+        player.SetActive(false); // turns off onyan-san
+    }
+    public void loadScene(int index)
+    {
+        SceneManager.LoadScene(index);
+        // scene 0 will be the main menu, scene 1 will be the victory screen, scene 2 will be tutorial, scenes 3+ will be levels 1+
     }
 }

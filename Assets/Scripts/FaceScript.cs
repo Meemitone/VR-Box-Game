@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FaceScript : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class FaceScript : MonoBehaviour
         KILL, //Entry Causes Reset
         SPRING, //Use will put you over a pit, not a block (easier to code)
         CHECK, //checkpoint
+        WIN, // win
     }
 
     public void doAwake()
@@ -231,6 +233,12 @@ public class FaceScript : MonoBehaviour
                 break;
             case FaceType.KILL:
                 player.Cease(player.prog.resetFace, player.prog.resetDir);
+                break;
+            case FaceType.WIN:
+                
+                LevelManager LVL = FindObjectOfType<LevelManager>();
+                LVL.WinLevel(0);
+                
                 break;
             default:
                 return false;

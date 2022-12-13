@@ -82,6 +82,7 @@ public class PlayerProgrammer : MonoBehaviour
         }
     }
 
+    // HEY KATE WHEN THERE IS CODE AND THEY TRY TO INPUT< FIX
     public void AddLink(int codenum)
     {
         if (!allowCode)
@@ -144,7 +145,7 @@ public class PlayerProgrammer : MonoBehaviour
         newCode.transform.SetParent(UIMenu.transform);
         currentIndex++;
         UIUpdate();
-    }
+    } 
 
     public void Clear()
     {
@@ -201,7 +202,6 @@ public class PlayerProgrammer : MonoBehaviour
         currentIndex--;
         UIUpdate();
     }
-
     public int Count()
     {
         CodeSegment holder = listFirst;
@@ -231,7 +231,6 @@ public class PlayerProgrammer : MonoBehaviour
             UIUpdate();
         }
     }
-
     public void UIUpdate()
     {
         indexMarker.transform.localPosition = indexZero;
@@ -264,7 +263,6 @@ public class PlayerProgrammer : MonoBehaviour
         }
         //rearrange the CodeSegment Objects to form the layout of the UI, along with inserting the text editor flashing | thing at currentIndex
     }
-
     public void RunStop()
     {
         if (listFirst == null)
