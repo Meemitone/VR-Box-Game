@@ -152,6 +152,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 targetPos = targetFace.transform.position;
         Quaternion currentRot = transform.rotation;
         Quaternion targetRot = GetTargetRot();
+
        /* if (targetRot == currentRot)
         {
             targetRot = Quaternion.LookRotation(targetFace.myCube.gameObject.transform.right, Vector3.up);

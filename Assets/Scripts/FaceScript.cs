@@ -112,20 +112,35 @@ public class FaceScript : MonoBehaviour
                 Debug.Log("Face failed to initialize", this);
                 break;
         }//this switch statement assigns all the directions to the childed checkers
-        //get face links
+        //get face links, east is commented, the rest are the same but replace east with new direction
         {
             //east block
             {
                 if (east.cube != null)
                 {
-                    faceEast = east.cube.GetExtWrapFace(sourcedir, east.direction);
+                    if (east.cube.transform.rotation == myCube.transform.rotation)
+                    {//if the cubes have the same rotation, get the face in this direction the old fashioned way
+                        faceEast = east.cube.GetExtWrapFace(sourcedir, east.direction);
+                    }
+                    else
+                    {//if there's a rotation involved between the cubes then the target face should (SHOULD) be between the checker and this face (looks like "_|.") so a raycast from the checker to this should (SHOULD) find that sandwiched face
+                        RaycastHit hit;
+                        if(Physics.Raycast(east.transform.position, transform.position-east.transform.position, out hit ,(transform.position - east.transform.position).magnitude, LayerMask.GetMask("Faces"), QueryTriggerInteraction.Collide))
+                        {
+                            faceEast = hit.collider.gameObject.GetComponent<FaceScript>();
+                        }
+                        else
+                        {
+                            Debug.Log("East Raycast missed", this);
+                        }
+                    }
                 }
                 else if (east.face != null)
-                {
+                {//if the checker found a face, easy money
                     faceEast = east.face;
                 }
                 else
-                {
+                {//if the checker found nothing, then heading in the checkers direction wraps you around the cube
                     faceEast = myCube.GetIntWrapperFace(sourcedir, east.direction);
                 }
                 eDir = east.direction;
@@ -134,7 +149,22 @@ public class FaceScript : MonoBehaviour
             {
                 if (west.cube != null)
                 {
-                    faceWest = west.cube.GetExtWrapFace(sourcedir, west.direction);
+                    if (west.cube.transform.rotation == myCube.transform.rotation)
+                    {
+                        faceWest = west.cube.GetExtWrapFace(sourcedir, west.direction);
+                    }
+                    else
+                    { 
+                        RaycastHit hit;
+                        if (Physics.Raycast(west.transform.position, transform.position - west.transform.position, out hit, (transform.position - west.transform.position).magnitude, LayerMask.GetMask("Faces"), QueryTriggerInteraction.Collide))
+                        {
+                            faceWest = hit.collider.gameObject.GetComponent<FaceScript>();
+                        }
+                        else
+                        {
+                            Debug.Log("West Raycast missed", this);
+                        }
+                    }
                 }
                 else if (west.face != null)
                 {
@@ -150,7 +180,22 @@ public class FaceScript : MonoBehaviour
             {
                 if (north.cube != null)
                 {
-                    faceNorth = north.cube.GetExtWrapFace(sourcedir, north.direction);
+                    if (north.cube.transform.rotation == myCube.transform.rotation)
+                    {
+                        faceNorth = north.cube.GetExtWrapFace(sourcedir, north.direction);
+                    }
+                    else
+                    {
+                        RaycastHit hit;
+                        if (Physics.Raycast(north.transform.position, transform.position - north.transform.position, out hit, (transform.position - north.transform.position).magnitude, LayerMask.GetMask("Faces"), QueryTriggerInteraction.Collide))
+                        {
+                            faceNorth = hit.collider.gameObject.GetComponent<FaceScript>();
+                        }
+                        else
+                        {
+                            Debug.Log("North Raycast missed", this);
+                        }
+                    }
                 }
                 else if (north.face != null)
                 {
@@ -166,7 +211,22 @@ public class FaceScript : MonoBehaviour
             {
                 if (south.cube != null)
                 {
-                    faceSouth = south.cube.GetExtWrapFace(sourcedir, south.direction);
+                    if (south.cube.transform.rotation == myCube.transform.rotation)
+                    {
+                        faceSouth = south.cube.GetExtWrapFace(sourcedir, south.direction);
+                    }
+                    else
+                    {
+                        RaycastHit hit;
+                        if (Physics.Raycast(south.transform.position, transform.position - south.transform.position, out hit, (transform.position - south.transform.position).magnitude, LayerMask.GetMask("Faces"), QueryTriggerInteraction.Collide))
+                        {
+                            faceSouth = hit.collider.gameObject.GetComponent<FaceScript>();
+                        }
+                        else
+                        {
+                            Debug.Log("South Raycast missed", this);
+                        }
+                    }
                 }
                 else if (south.face != null)
                 {
@@ -183,11 +243,11 @@ public class FaceScript : MonoBehaviour
     }
     public FaceScript GetFaceInDir(CubeScript.dirs facing)
     {
-        if (facing == nDir)
+        if (facing == nDir)//if facing north
         {
-            if (faceNorth.faceT == FaceType.BLOCK)
-                return null;
-            return faceNorth;
+            if (faceNorth.faceT == FaceType.BLOCK)//if the face in the north direction is a block
+                return null; //tell the source that the move is invalid
+            return faceNorth;//else give north face
         }
         if (facing == sDir)
         {
@@ -207,14 +267,18 @@ public class FaceScript : MonoBehaviour
                 return null;
             return faceWest;
         }
+        Debug.Log("GetFaceInDir recieved invalid dir (Up or down while on the up face for e.g.)", this);
         return null;
     }
 
     public bool Enter(PlayerMovement player)
     {
-        switch (faceT)
+        //called when the player enters this face
+        //returns true if the player needs to run another resolve and be stopped after
+        //returns false if the player need not be interrupted
+        switch (faceT)//depending on this faces type
         {
-            case FaceType.CHECK:
+            case FaceType.CHECK://trigger checkpoint interaction
                 if (player.prog.resetFace != this)
                 {
                     player.prog.resetFace = this;
@@ -231,18 +295,16 @@ public class FaceScript : MonoBehaviour
                     return true;
                 }
                 break;
-            case FaceType.KILL:
+            case FaceType.KILL://kill the player
                 player.Cease(player.prog.resetFace, player.prog.resetDir);
-                break;
-            case FaceType.WIN:
-                
+                return false;//return false because Cease initializes a terminating resolve
+            case FaceType.WIN://win the level
                 LevelManager LVL = FindObjectOfType<LevelManager>();
                 LVL.WinLevel(0);
-                
-                break;
-            default:
+                return false;//player norts self as per LVL.Win
+            default://enter did nothing
                 return false;
         }
-        return false;
+        return false;//this is to avoid a "not all paths return a value" warning, it's actually unreachable
     }
 }
