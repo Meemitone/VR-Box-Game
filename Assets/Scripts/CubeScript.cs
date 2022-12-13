@@ -80,4 +80,25 @@ public class CubeScript : MonoBehaviour
                 return dirs.NULL;
         }
     }
+
+    public Vector3 dirToVect(CubeScript.dirs dir)
+    {
+        switch (dir)
+        {
+            case CubeScript.dirs.UP:
+                return transform.up;
+            case CubeScript.dirs.DOWN:
+                return -transform.up;
+            case CubeScript.dirs.RIGHT:
+                return transform.right;
+            case CubeScript.dirs.LEFT:
+                return -transform.right;
+            case CubeScript.dirs.FOREWARD:
+                return transform.forward;
+            case CubeScript.dirs.BACK:
+                return -transform.forward;
+            default:
+                return Vector3.zero;
+        }
+    }
 }

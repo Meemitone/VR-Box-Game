@@ -209,12 +209,14 @@ public class PlayerMovement : MonoBehaviour
 
     private Quaternion GetTargetRot()
     {
-        if (facing == targetDir)
+        /*if (facing == targetDir)
         {
             return transform.rotation;
         }
-        else
+        else*/
         {
+            return Quaternion.LookRotation(targetFace.myCube.dirToVect(targetDir), targetFace.myCube.dirToVect(targetFace.sourcedir));
+            //above gets the rotation based on how the cube is rotated, below uses the global rotatespace. Above might still fail if the cube is rotated a full 90 degrees
             return Quaternion.LookRotation(dirToVect(targetDir),dirToVect(targetFace.sourcedir));
         }
     }
