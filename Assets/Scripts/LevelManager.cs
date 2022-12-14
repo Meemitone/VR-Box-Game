@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     [Header("Buttons")]
     public bool moveThemUp = false;
     public bool moveThemIn = false;
+    public bool ohGodItsFuckingArmaggeddon = false;
     
     [Header("Settings")]
     public bool StartAtSpawn;
@@ -34,6 +35,17 @@ public class LevelManager : MonoBehaviour
 
     private GameObject player;
     public int targetSceneIndex;
+    private GameObject truthSeekerOrb;
+    public GameObject Corb;
+
+    private void Awake()
+    {
+        if (ohGodItsFuckingArmaggeddon)
+        {
+            truthSeekerOrb = Instantiate(Corb);
+        }
+    }
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");

@@ -46,7 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveThemUp: 0
   moveThemIn: 1
-  StartAtSpawn: 0
+  ohGodItsFuckingArmaggeddon: 0
+  StartAtSpawn: 1
+  moveInSpawn: {x: 0, y: -5, z: 0}
+  onyanSpawn: {x: 0, y: 3, z: 0}
   cubeMoveNum: 0
   inLerpFloat: 0.01
   inLerpTolorance: 0.01
@@ -55,10 +58,11 @@ MonoBehaviour:
   moveUpTime: 3
   upCountSpeed: 0.1
   inCountSpeed: 0.25
-  moveInSpawn: {x: 0, y: -5, z: 0}
   cubes: []
   cubesSavedPos: []
   cubesActive: 
   cubesMoveUp: 
   cubesMoveIn: 
   cubesMoveSpeed: []
+  targetSceneIndex: 0
+  Corb: {fileID: 2824750626714455675, guid: fc1eaebd6e793164782a8b659e5e231e, type: 3}
