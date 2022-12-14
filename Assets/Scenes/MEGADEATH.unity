@@ -1366,7 +1366,17 @@ PrefabInstance:
     - target: {fileID: 3900177023814107641, guid: 0f2a9a5e058a5d9428c296ae3da0b6e4,
         type: 3}
       propertyPath: inCountSpeed
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900177023814107641, guid: 0f2a9a5e058a5d9428c296ae3da0b6e4,
+        type: 3}
+      propertyPath: onyanSpawn.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900177023814107641, guid: 0f2a9a5e058a5d9428c296ae3da0b6e4,
+        type: 3}
+      propertyPath: moveInSpawn.y
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 3900177023814107641, guid: 0f2a9a5e058a5d9428c296ae3da0b6e4,
         type: 3}
