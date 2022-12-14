@@ -60,6 +60,11 @@ public class PlayerMovement : MonoBehaviour
                 prog.proceed = false;
                 TurnPlayerRight();
             }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                prog.proceed = false;
+                ActivateSpace();
+            }
         }
         
         if (changeColour)
@@ -128,6 +133,11 @@ public class PlayerMovement : MonoBehaviour
                         StartCoroutine(Resolve(true));
                     }
                 }
+                break;
+            case FaceScript.FaceType.LOADLEVEL:
+                LevelManager levelManager = FindObjectOfType<LevelManager>();
+                levelManager.GoToLevel(standing.loadLevelIndex);
+                
                 break;
             default:
                 prog.proceed = true;

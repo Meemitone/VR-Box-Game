@@ -1847,6 +1847,16 @@ PrefabInstance:
       objectReference: {fileID: 1494758659}
     - target: {fileID: 3900177023814107641, guid: 0f2a9a5e058a5d9428c296ae3da0b6e4,
         type: 3}
+      propertyPath: UIPresent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900177023814107641, guid: 0f2a9a5e058a5d9428c296ae3da0b6e4,
+        type: 3}
+      propertyPath: currentUI
+      value: 
+      objectReference: {fileID: 408232776}
+    - target: {fileID: 3900177023814107641, guid: 0f2a9a5e058a5d9428c296ae3da0b6e4,
+        type: 3}
       propertyPath: StartAtSpawn
       value: 1
       objectReference: {fileID: 0}

@@ -47,8 +47,9 @@ MonoBehaviour:
   moveThemUp: 0
   moveThemIn: 1
   ohGodItsFuckingArmaggeddon: 0
+  levelTransitionScale: 1
   StartAtSpawn: 1
-  moveInSpawn: {x: 0, y: -5, z: 0}
+  moveInSpawn: {x: 0, y: -100, z: 0}
   onyanSpawn: {x: 0, y: 3, z: 0}
   cubeMoveNum: 0
   inLerpFloat: 0.01

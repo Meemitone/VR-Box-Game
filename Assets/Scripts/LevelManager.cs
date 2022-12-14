@@ -11,8 +11,9 @@ public class LevelManager : MonoBehaviour
     public bool moveThemUp = false;
     public bool moveThemIn = false;
     public bool ohGodItsFuckingArmaggeddon = false;
-    
-    [Header("Settings")]
+
+    [Header("Settings")] 
+    public float levelTransitionScale = 1;
     public bool StartAtSpawn;
     public Vector3 moveInSpawn = new Vector3(0, -100, 0);
     public Vector3 onyanSpawn = new Vector3(0, 3, 0);
@@ -21,7 +22,7 @@ public class LevelManager : MonoBehaviour
     public float inLerpTolorance = 0.0001f;
     public float upSpeedCap = 5f;
     public float moveUpAcceleration = 0.01f;
-    public float moveUpTime = 10;
+    public float moveUpTime = 3;
     public float upCountSpeed = 0.2f;
     public float inCountSpeed = 0.2f;
     
@@ -33,6 +34,8 @@ public class LevelManager : MonoBehaviour
     public bool[] cubesMoveIn;
     public float[] cubesMoveSpeed;
 
+    public bool UIPresent = false;
+    public GameObject currentUI = null;
     private GameObject player;
     public int targetSceneIndex;
     private GameObject truthSeekerOrb;
@@ -40,9 +43,16 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        if (UIPresent)
+        {
+            currentUI.SetActive(false); // if there is Ui, hide it at the start
+        }
+
+        upCountSpeed *= levelTransitionScale;
+        inCountSpeed *= levelTransitionScale; // scale the animation speeds
         if (ohGodItsFuckingArmaggeddon)
         {
-            truthSeekerOrb = Instantiate(Corb);
+            truthSeekerOrb = Instantiate(Corb); // armaggedon button
         }
     }
 
@@ -89,15 +99,22 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         if(moveThemIn && !moveThemUp) MoveEmIn();
-        if(moveThemUp && !moveThemIn) MoveEmUp();
+        if(moveThemUp && !moveThemIn) MoveEmUp(); // self explanatory
     }
     void MoveEmIn()
     {
-        if (cubeMoveNum <= cubes.Length - 1)
+        if (cubeMoveNum < cubes.Length - 1)
         {
             cubeMoveNum += inCountSpeed;
         }
-        for (int I = 0; I < cubeMoveNum; I++)
+        
+        if (cubeMoveNum > cubes.Length -1)
+        {
+            cubeMoveNum = cubes.Length -1; // counts up the cubes, makes sure not to go over that
+        }
+        
+        
+        for (int I = 0; I <= cubeMoveNum; I++)
         {
             cubesMoveIn[I] = true;
         } // increases the number of cubes that are moving
@@ -123,17 +140,27 @@ public class LevelManager : MonoBehaviour
             for (int I = 0; I < cubes.Length; I++) cubes[I].transform.position = cubesSavedPos[I];
             cubeMoveNum = 0;
             player.GetComponent<PlayerMovement>().Cease(player.GetComponent<PlayerMovement>().prog.resetFace, player.GetComponent<PlayerMovement>().prog.resetDir); // Jump from the player's head to the spawn cube
+            if(UIPresent)
+            currentUI.SetActive(true); // turns the ui back on
             moveThemIn = false;
         }
     }
     void MoveEmUp() // ----------------------------------------------------------------end level animation-------------------------------------------
     {
-
+        if(UIPresent)
+        currentUI.SetActive(false); // turn the ui off again
         if (cubeMoveNum <= cubes.Length - 1)
         {
             cubeMoveNum += upCountSpeed;
         }
-        for (int I = 0; I < cubeMoveNum; I++)
+        
+        if (cubeMoveNum > cubes.Length -1)
+        {
+            cubeMoveNum = cubes.Length -1; // counts up the cubes, makes sure not to go over that
+        }
+        
+        
+        for (int I = 0; I <= cubeMoveNum; I++)
         {
             cubesMoveUp[I] = true;
         } // increases the number of cubes that are moving
@@ -181,7 +208,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void WinLevel(int LVL)
+    public void GoToLevel(int LVL)
     {
         targetSceneIndex = LVL;
         moveThemUp = true;

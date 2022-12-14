@@ -24,7 +24,10 @@ public class FaceScript : MonoBehaviour
         SPRING, //Use will put you over a pit, not a block (easier to code)
         CHECK, //checkpoint
         WIN, // win
+        LOADLEVEL,
     }
+
+    public int loadLevelIndex = 0;
 
     public void doAwake()
     {
@@ -300,7 +303,7 @@ public class FaceScript : MonoBehaviour
                 return false;//return false because Cease initializes a terminating resolve
             case FaceType.WIN://win the level
                 LevelManager LVL = FindObjectOfType<LevelManager>();
-                LVL.WinLevel(0);
+                LVL.GoToLevel(0);
                 return false;//player norts self as per LVL.Win
             default://enter did nothing
                 return false;
