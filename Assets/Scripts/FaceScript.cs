@@ -303,7 +303,7 @@ public class FaceScript : MonoBehaviour
                 return false;//return false because Cease initializes a terminating resolve
             case FaceType.WIN://win the level
                 LevelManager LVL = FindObjectOfType<LevelManager>();
-                LVL.GoToLevel(0);
+                LVL.GoToLevel(loadLevelIndex);
                 return false;//player norts self as per LVL.Win
             default://enter did nothing
                 return false;
