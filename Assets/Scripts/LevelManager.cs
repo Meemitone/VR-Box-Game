@@ -48,8 +48,7 @@ public class LevelManager : MonoBehaviour
             currentUI.SetActive(false); // if there is Ui, hide it at the start
         }
 
-        upCountSpeed *= levelTransitionScale;
-        inCountSpeed *= levelTransitionScale; // scale the animation speeds
+
         if (ohGodItsFuckingArmaggeddon)
         {
             truthSeekerOrb = Instantiate(Corb); // armaggedon button
@@ -94,6 +93,9 @@ public class LevelManager : MonoBehaviour
             }
         }
 
+        levelTransitionScale += cubes.Length / 100f;
+        upCountSpeed *= levelTransitionScale;
+        inCountSpeed *= levelTransitionScale; // scale the animation speeds
         upSpeedCap = moveUpAcceleration * moveUpTime * 100;
     }
     void Update()

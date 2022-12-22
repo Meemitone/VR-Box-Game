@@ -1519,6 +1519,12 @@ PrefabInstance:
       objectReference: {fileID: 542285115}
     - target: {fileID: 3900177023814107641, guid: 0f2a9a5e058a5d9428c296ae3da0b6e4,
         type: 3}
+      propertyPath: Corb
+      value: 
+      objectReference: {fileID: 2824750626714455675, guid: fc1eaebd6e793164782a8b659e5e231e,
+        type: 3}
+    - target: {fileID: 3900177023814107641, guid: 0f2a9a5e058a5d9428c296ae3da0b6e4,
+        type: 3}
       propertyPath: inLerpFloat
       value: 0.01
       objectReference: {fileID: 0}

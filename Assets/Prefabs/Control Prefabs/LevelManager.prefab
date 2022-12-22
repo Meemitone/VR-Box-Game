@@ -65,5 +65,7 @@ MonoBehaviour:
   cubesMoveUp: 
   cubesMoveIn: 
   cubesMoveSpeed: []
+  UIPresent: 0
+  currentUI: {fileID: 0}
   targetSceneIndex: 0
-  Corb: {fileID: 2824750626714455675, guid: fc1eaebd6e793164782a8b659e5e231e, type: 3}
+  Corb: {fileID: 0}
