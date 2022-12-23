@@ -61,19 +61,19 @@ public class PlayerProgrammer : MonoBehaviour
             {
                 switch (currentCode.code)
                 {
-                    case codes.STEP:
+                    case codes.STEP://0
                         player.MovePlayer();
                         break;
-                    case codes.LEFT:
+                    case codes.LEFT://1
                         player.TurnPlayerLeft();
                         break;
-                    case codes.RIGHT:
+                    case codes.RIGHT://2
                         player.TurnPlayerRight();
                         break;
-                    case codes.USE:
+                    case codes.USE://3
                         player.ActivateSpace();
                         break;
-                    case codes.SPRINT:
+                    case codes.SPRINT://5
                         player.MoveUntilUnable();
                         break;
                     default:
@@ -82,7 +82,9 @@ public class PlayerProgrammer : MonoBehaviour
             }
             else
                 return;
+            currentCode.highlight.SetActive(false);
             currentCode = currentCode.Next;
+            currentCode.highlight.SetActive(true);
         }
     }
 
@@ -285,11 +287,13 @@ public class PlayerProgrammer : MonoBehaviour
             proceed = true;
             allowCode = false;
             currentCode = listFirst;
+            currentCode.highlight.SetActive(true);
             return;
         }
 
         proceed = false;
-
+        if (currentCode != null)
+            currentCode.highlight.SetActive(false);
         player.Cease(resetFace, resetDir);
         allowCode = true;
     }
