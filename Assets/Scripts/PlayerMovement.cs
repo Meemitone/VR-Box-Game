@@ -174,66 +174,67 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Resolve(bool maintain)
     {
-        
-        
-        Vector3 currentPos = transform.position;
-        Vector3 targetPos = targetFace.transform.position;
-        Quaternion currentRot = transform.rotation;
-        Quaternion targetRot = GetTargetRot();
+        if(targetFace.faceT != FaceScript.FaceType.BLOCK)
+        {
+            Vector3 currentPos = transform.position;
+            Vector3 targetPos = targetFace.transform.position;
+            Quaternion currentRot = transform.rotation;
+            Quaternion targetRot = GetTargetRot();
 
-       /* if (targetRot == currentRot)
-        {
-            targetRot = Quaternion.LookRotation(targetFace.myCube.gameObject.transform.right, Vector3.up);
-        }
-        /*
-        {
-            int tempSteps = numberOfSteps;
-            for (int i = 0; i < tempSteps; i++)
+            /* if (targetRot == currentRot)
+             {
+                 targetRot = Quaternion.LookRotation(targetFace.myCube.gameObject.transform.right, Vector3.up);
+             }
+             /*
+             {
+                 int tempSteps = numberOfSteps;
+                 for (int i = 0; i < tempSteps; i++)
+                 {
+                     float div = i / ((float)tempSteps);
+                     float tempHeight = moveHeight * Mathf.Sin(i / ((float)tempSteps) * Mathf.PI);
+                     transform.position = Vector3.Lerp(currentPos, targetPos, div);
+                     Vector3 heightadjust = transform.up * tempHeight;
+                     transform.localPosition += heightadjust;
+                     transform.rotation = Quaternion.Slerp(currentRot, targetRot, div);
+                     yield return null;
+                 }
+             }
+             */
+            float tempTime = stepTime;
+            float currentTime = 0;
+
+            anim.SetBool("Jump", true);
+            if (anim.GetBool("Inverse")) { anim.SetBool("Inverse", false); }
+            else
+            { anim.SetBool("Inverse", true); }
+
+            while (currentTime < tempTime)
             {
-                float div = i / ((float)tempSteps);
-                float tempHeight = moveHeight * Mathf.Sin(i / ((float)tempSteps) * Mathf.PI);
+                currentTime += Time.deltaTime;
+                float div = currentTime / tempTime;
+                float tempHeight = moveHeight * Mathf.Sin((div) * Mathf.PI);
                 transform.position = Vector3.Lerp(currentPos, targetPos, div);
-                Vector3 heightadjust = transform.up * tempHeight;
-                transform.localPosition += heightadjust;
+                transform.localPosition += transform.up * tempHeight;
                 transform.rotation = Quaternion.Slerp(currentRot, targetRot, div);
+
                 yield return null;
             }
+
+            anim.SetBool("Jump", false);
+
+            transform.position = targetPos;
+            transform.rotation = targetRot;
+            standing = targetFace;
+            facing = targetDir;
+            moveHeight = RMH;
+            if (targetFace.Enter(this))
+            {
+                StartCoroutine(Resolve(false));
+                yield break;
+            }
         }
-        */
-        float tempTime = stepTime;
-        float currentTime = 0;
-        
-        anim.SetBool("Jump",true);
-        if(anim.GetBool("Inverse")){anim.SetBool("Inverse",false);}
-        else
-        { anim.SetBool("Inverse",true); }
-
-        while(currentTime<tempTime)
-        {
-            currentTime += Time.deltaTime;
-            float div = currentTime / tempTime;
-            float tempHeight = moveHeight * Mathf.Sin((div) * Mathf.PI);
-            transform.position = Vector3.Lerp(currentPos, targetPos, div);
-            transform.localPosition += transform.up * tempHeight;
-            transform.rotation = Quaternion.Slerp(currentRot, targetRot, div);
-
-            yield return null;
-        }
-
-        anim.SetBool("Jump",false);
-
-        transform.position = targetPos;
-        transform.rotation = targetRot;
-        standing = targetFace;
-        facing = targetDir;
-        moveHeight = RMH;
-        if(targetFace.Enter(this))
-        {
-            StartCoroutine(Resolve(false));
-            yield break;
-        }
-
         prog.proceed = maintain || playtest;
+        yield break;
     }
 
     private Quaternion GetTargetRot()

@@ -186,6 +186,7 @@ MonoBehaviour:
   codeRight: {fileID: 7299362430089759230, guid: e439c87eca3071642b6bd0a0101050b7,
     type: 3}
   codeUse: {fileID: 9115269883440122451, guid: 68001527903948941871aeb0f45adb34, type: 3}
+  codeSprint: {fileID: 0}
 --- !u!1 &3667850670321977915
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,6 +980,21 @@ PrefabInstance:
         type: 3}
       propertyPath: onPressed.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: RunStop
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755287441086784794, guid: 380c1dd9a5c352c4983beb97ef040115,
+        type: 3}
+      propertyPath: onPressed.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3667850668762372672}
+    - target: {fileID: 4755287441086784794, guid: 380c1dd9a5c352c4983beb97ef040115,
+        type: 3}
+      propertyPath: onPressed.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: AddLink
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755287441086784794, guid: 380c1dd9a5c352c4983beb97ef040115,
+        type: 3}
+      propertyPath: onPressed.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6481443577971209387, guid: 380c1dd9a5c352c4983beb97ef040115,
         type: 3}
