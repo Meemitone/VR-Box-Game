@@ -7,4 +7,5 @@ public class CodeSegment : MonoBehaviour
     public CodeSegment Next;
     public CodeSegment Prev;
     public PlayerProgrammer.codes code;
+    public GameObject highlight;
 }
