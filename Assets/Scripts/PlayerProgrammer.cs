@@ -120,7 +120,7 @@ public class PlayerProgrammer : MonoBehaviour
 
         if (newCode == null)
             return;
-        newCode.transform.rotation = UIMenu.transform.rotation;
+        newCode.transform.rotation = UIMenu.transform.rotation;//the rotation of the code matches the menu
         {
             //Make the new code link up
             if (listFirst == null)
@@ -132,26 +132,26 @@ public class PlayerProgrammer : MonoBehaviour
             {
                 CodeSegment indexed = getByIndex(currentIndex);
                 if(indexed == null)
-                {//index was 0
-                    if(listFirst!=null)
+                {//index was 0 (insert at start of code)
+                    if(listFirst!=null)//if there's code already
                     {
-                        listFirst.Prev = newCode.GetComponent<CodeSegment>();
+                        listFirst.Prev = newCode.GetComponent<CodeSegment>();//the fist piece of code needs to point backwards to this new one
                     }
-                    newCode.GetComponent<CodeSegment>().Next = listFirst;
-                    listFirst = newCode.GetComponent<CodeSegment>();
+                    newCode.GetComponent<CodeSegment>().Next = listFirst;//new code needs to say the next code is the one that's currently first
+                    listFirst = newCode.GetComponent<CodeSegment>();//new code is now the first in the list
                 }
-                if (indexed.Next == null)
+                else if (indexed.Next == null)//indexed wasn't null, so we are in the list somewhere, if next is null, this is the end of the list
                 {
-                    listLast = newCode.GetComponent<CodeSegment>();
-                    indexed.Next = newCode.GetComponent<CodeSegment>();
-                    indexed.Next.Prev = indexed;
+                    listLast = newCode.GetComponent<CodeSegment>();//new code goes on the end
+                    indexed.Next = newCode.GetComponent<CodeSegment>();//previous end points to this one as it's next
+                    indexed.Next.Prev = indexed;//the backwards pointer of the one added as the next in line after the one we found, is the one we found (or "newCode.GetComponent<CodeSegment>().Prev = indexed;")
                 }
-                else
+                else//not the first in the list and not the last either
                 {
-                    newCode.GetComponent<CodeSegment>().Next = indexed.Next;
-                    newCode.GetComponent<CodeSegment>().Prev = indexed;
-                    indexed.Next.Prev = newCode.GetComponent<CodeSegment>();
-                    indexed.Next = newCode.GetComponent<CodeSegment>();
+                    newCode.GetComponent<CodeSegment>().Next = indexed.Next;//newcode is being inserted between 2 existing codes, it's next is the second one (the one after the indexed one)
+                    newCode.GetComponent<CodeSegment>().Prev = indexed;//it's previous is the first of the 2, the indexed one
+                    indexed.Next.Prev = newCode.GetComponent<CodeSegment>();//the second one needs to point back to the new code
+                    indexed.Next = newCode.GetComponent<CodeSegment>();//the first needs to point forward to the new code
                 }
                 /*
                 listLast.Next = newCode.GetComponent<CodeSegment>();
@@ -161,9 +161,9 @@ public class PlayerProgrammer : MonoBehaviour
             }
         }
 
-        newCode.transform.SetParent(UIMenu.transform);
-        currentIndex++;
-        UIUpdate();
+        newCode.transform.SetParent(UIMenu.transform);//add the new code to the menu for UIUpdate to handle
+        currentIndex++;//the location of the index is now after the newly minted code
+        UIUpdate();//rearrange the segments
     } 
 
     public void Clear()
@@ -284,7 +284,7 @@ public class PlayerProgrammer : MonoBehaviour
     }
     public void RunStop()
     {
-        if (listFirst == null)
+        if (listFirst == null)//if there's no code, do nothing
             return;
 
         if (allowCode)
