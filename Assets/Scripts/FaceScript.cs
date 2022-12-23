@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class FaceScript : MonoBehaviour
 {
     public FaceType faceT;
-    [HideInInspector]
+    //[HideInInspector]
     public FaceScript faceNorth = null, faceWest = null, faceEast = null, faceSouth = null; //front is shorter than foreward
     private int CubeLayer = 1 << 6;//this is the layer that cubes are on, the faces occupy layer 7
     [SerializeField] private FaceCheckerScript north, south, east, west; //these are the face checkers
@@ -37,10 +37,10 @@ public class FaceScript : MonoBehaviour
             Debug.Log("Face hit multiple cubes", transform.parent.gameObject);
         if (checklist.Length > 0)
             gameObject.SetActive(false);//face hit at least 1 cube so disable it (and therefore it's childs)
-        if (faceT == FaceType.BLOCK)
+        /*if (faceT == FaceType.BLOCK)
         { //neccesary? all this really does is make it unleavable
             gameObject.SetActive(false);
-        }
+        }*/
         myCube = transform.parent.gameObject.GetComponent<CubeScript>();
         north.doAwake();
         south.doAwake();
@@ -51,6 +51,10 @@ public class FaceScript : MonoBehaviour
     public CubeScript.dirs GetMoveDir(CubeScript.dirs facing)
     {
         FaceScript target = GetFaceInDir(facing);
+        if(target==null)
+        {
+            return CubeScript.dirs.NULL;
+        }
         if (target.sourcedir == sourcedir)
         {//this doesn't work with the idea of rotated cubes
             return facing;

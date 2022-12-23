@@ -171,6 +171,9 @@ MonoBehaviour:
   proceed: 0
   resetFace: {fileID: 0}
   resetDir: 0
+  listFirst: {fileID: 0}
+  currentCode: {fileID: 0}
+  listLast: {fileID: 0}
   indexMarker: {fileID: 1823288463797577782}
   UIMenu: {fileID: 3427486907389480377}
   allowCode: 1

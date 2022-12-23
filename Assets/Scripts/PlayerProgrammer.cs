@@ -9,9 +9,11 @@ public class PlayerProgrammer : MonoBehaviour
     private PlayerMovement player;
     public FaceScript resetFace;
     public CubeScript.dirs resetDir;
-    private CodeSegment listFirst;
-    private CodeSegment currentCode;
-    private CodeSegment listLast;
+
+    [SerializeField] private CodeSegment listFirst;
+    [SerializeField] private CodeSegment currentCode;
+    [SerializeField] private CodeSegment listLast;
+
     public GameObject indexMarker;
     public GameObject UIMenu;
     public bool allowCode = true;
@@ -139,6 +141,8 @@ public class PlayerProgrammer : MonoBehaviour
                     }
                     newCode.GetComponent<CodeSegment>().Next = listFirst;//new code needs to say the next code is the one that's currently first
                     listFirst = newCode.GetComponent<CodeSegment>();//new code is now the first in the list
+                    if (listLast == null)
+                        listLast = listFirst;
                 }
                 else if (indexed.Next == null)//indexed wasn't null, so we are in the list somewhere, if next is null, this is the end of the list
                 {
@@ -284,6 +288,8 @@ public class PlayerProgrammer : MonoBehaviour
     }
     public void RunStop()
     {
+        if (!player.gameObject.activeSelf)
+            return;
         if (listFirst == null)//if there's no code, do nothing
             return;
 
