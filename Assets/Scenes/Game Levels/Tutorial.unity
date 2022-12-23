@@ -4525,7 +4525,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408232776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -10020,7 +10020,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Help Onyan-San reach the checkpoint!
+  m_Text: 'Tutorial: Help Onyan-san reach the goal by giving him intstructions. .
+    .'
 --- !u!222 &1212861757
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10592,8 +10593,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'To guide Onyan-San, Create a list of instructions using the PDA in your
-    hand
+  m_Text: 'Create a list of instructions using the PDA in your left hand
 
 '
 --- !u!222 &1311607542
@@ -12180,7 +12180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Use the three buttons in the middle to correct and erase mistakes
+  m_Text: Onyan-San will keep repeating the instructions FOREVER
 --- !u!222 &1500983974
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16616,7 +16616,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Use the arrow buttons to queue up a list of instructions
+  m_Text: Use the arrow buttons to give him directions to move in and Use the three
+    buttons in the middle to correct and erase mistakes
 --- !u!222 &2140782883
 CanvasRenderer:
   m_ObjectHideFlags: 0
