@@ -248,26 +248,18 @@ public class FaceScript : MonoBehaviour
     {
         if (facing == nDir)//if facing north
         {
-            if (faceNorth.faceT == FaceType.BLOCK)//if the face in the north direction is a block
-                return null; //tell the source that the move is invalid
-            return faceNorth;//else give north face
+            return faceNorth;//give north face
         }
         if (facing == sDir)
         {
-            if (faceSouth.faceT == FaceType.BLOCK)
-                return null;
             return faceSouth;
         }
         if (facing == eDir)
         {
-            if (faceEast.faceT == FaceType.BLOCK)
-                return null;
             return faceEast;
         }
         if (facing == wDir)
         {
-            if (faceWest.faceT == FaceType.BLOCK)
-                return null;
             return faceWest;
         }
         Debug.Log("GetFaceInDir recieved invalid dir (Up or down while on the up face for e.g.)", this);
