@@ -55,6 +55,7 @@ public class PlayerProgrammer : MonoBehaviour
             proceed = false;
             if (currentCode == null)
             {
+                listLast.highlight.SetActive(false);
                 currentCode = listFirst;
             }
             if (currentCode != null)
@@ -82,9 +83,10 @@ public class PlayerProgrammer : MonoBehaviour
             }
             else
                 return;
-            currentCode.highlight.SetActive(false);
-            currentCode = currentCode.Next;
+            if(currentCode.Prev!=null)
+            currentCode.Prev.highlight.SetActive(false);
             currentCode.highlight.SetActive(true);
+            currentCode = currentCode.Next;
         }
     }
 
@@ -108,6 +110,9 @@ public class PlayerProgrammer : MonoBehaviour
                 break;
             case codes.USE:
                 newCode = Instantiate(codeUse);
+                break;
+            case codes.SPRINT:
+                newCode = Instantiate(codeSprint);
                 break;
             default:
                 break;
@@ -293,7 +298,13 @@ public class PlayerProgrammer : MonoBehaviour
 
         proceed = false;
         if (currentCode != null)
+        {
             currentCode.highlight.SetActive(false);
+            if (currentCode.Prev != null)
+                currentCode.Prev.highlight.SetActive(false);
+        }
+        if (listLast != null)
+            listLast.highlight.SetActive(false);
         player.Cease(resetFace, resetDir);
         allowCode = true;
     }

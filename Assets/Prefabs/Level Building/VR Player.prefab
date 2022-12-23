@@ -186,7 +186,8 @@ MonoBehaviour:
   codeRight: {fileID: 7299362430089759230, guid: e439c87eca3071642b6bd0a0101050b7,
     type: 3}
   codeUse: {fileID: 9115269883440122451, guid: 68001527903948941871aeb0f45adb34, type: 3}
-  codeSprint: {fileID: 0}
+  codeSprint: {fileID: 9115269883440122451, guid: 4759b5b9b88031b48b661557df03b08c,
+    type: 3}
 --- !u!1 &3667850670321977915
 GameObject:
   m_ObjectHideFlags: 0

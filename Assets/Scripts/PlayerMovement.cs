@@ -160,7 +160,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator MoveUntilStopped()
     {
-        while (standing.GetFaceInDir(facing) != null) 
+        while (standing.GetFaceInDir(facing).faceT!=FaceScript.FaceType.BLOCK) 
         {
             {
                 targetFace = standing.GetFaceInDir(facing);
