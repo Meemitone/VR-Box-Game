@@ -22,14 +22,15 @@ public class PlayerProgrammer : MonoBehaviour
     public Vector3 rightShift;
     public Vector3 downShift;
 
-    public GameObject codeMove, codeLeft, codeRight, codeUse;
+    public GameObject codeMove, codeLeft, codeRight, codeUse, codeSprint;
     public enum codes
     {
         STEP,
         LEFT,
         RIGHT,
         USE,
-        END
+        END,
+        SPRINT //go until unable
     }
 
     private void Awake()
@@ -49,7 +50,7 @@ public class PlayerProgrammer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (proceed && !player.playtest)
+        if (proceed && !player.playtest && player.gameObject.activeSelf)
         {
             proceed = false;
             if (currentCode == null)
@@ -72,6 +73,9 @@ public class PlayerProgrammer : MonoBehaviour
                     case codes.USE:
                         player.ActivateSpace();
                         break;
+                    case codes.SPRINT:
+                        player.MoveUntilUnable();
+                        break;
                     default:
                         break;
                 }
@@ -82,7 +86,6 @@ public class PlayerProgrammer : MonoBehaviour
         }
     }
 
-    // HEY KATE WHEN THERE IS CODE AND THEY TRY TO INPUT< FIX
     public void AddLink(int codenum)
     {
         if (!allowCode)
@@ -121,6 +124,15 @@ public class PlayerProgrammer : MonoBehaviour
             else
             {
                 CodeSegment indexed = getByIndex(currentIndex);
+                if(indexed == null)
+                {//index was 0
+                    if(listFirst!=null)
+                    {
+                        listFirst.Prev = newCode.GetComponent<CodeSegment>();
+                    }
+                    newCode.GetComponent<CodeSegment>().Next = listFirst;
+                    listFirst = newCode.GetComponent<CodeSegment>();
+                }
                 if (indexed.Next == null)
                 {
                     listLast = newCode.GetComponent<CodeSegment>();

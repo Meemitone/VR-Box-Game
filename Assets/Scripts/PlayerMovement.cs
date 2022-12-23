@@ -88,6 +88,10 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(Resolve(true));
         }
     }
+    public void MoveUntilUnable()
+    {
+        StartCoroutine(MoveUntilStopped());
+    }
 
     public void TurnPlayerLeft()//counter clockwise
     {
@@ -152,6 +156,20 @@ public class PlayerMovement : MonoBehaviour
         targetFace = resetFace;
         targetDir = resetDir;
         StartCoroutine(Resolve(false));
+    }
+
+    IEnumerator MoveUntilStopped()
+    {
+        while (standing.GetFaceInDir(facing) != null) 
+        {
+            {
+                targetFace = standing.GetFaceInDir(facing);
+                targetDir = standing.GetMoveDir(facing);
+                yield return Resolve(false);
+            }
+        }
+        prog.proceed = true;
+        yield return null;
     }
 
     IEnumerator Resolve(bool maintain)

@@ -214,6 +214,9 @@ public class LevelManager : MonoBehaviour
     {
         targetSceneIndex = LVL;
         moveThemUp = true;
+        PlayerMovement playerController = player.GetComponent<PlayerMovement>();
+        if (playerController != null)
+            playerController.StopAllCoroutines();
         player.SetActive(false); // turns off onyan-san
     }
     public void loadScene(int index)
