@@ -6,10 +6,10 @@ public class PlayerProgrammer : MonoBehaviour
 {
     [Tooltip("Hit this for playtest wasd controls, also hit playtest in playerMovement")]
     public bool proceed = false;
+    [Header("Do not adjust below this line")]
     private PlayerMovement player;
     public FaceScript resetFace;
     public CubeScript.dirs resetDir;
-
     [SerializeField] private CodeSegment listFirst;
     [SerializeField] private CodeSegment currentCode;
     [SerializeField] private CodeSegment listLast;
@@ -123,6 +123,7 @@ public class PlayerProgrammer : MonoBehaviour
         if (newCode == null)
             return;
         newCode.transform.rotation = UIMenu.transform.rotation;//the rotation of the code matches the menu
+        newCode.GetComponent<CodeSegment>().index.proggers = this;
         {
             //Make the new code link up
             if (listFirst == null)
@@ -169,7 +170,6 @@ public class PlayerProgrammer : MonoBehaviour
         currentIndex++;//the location of the index is now after the newly minted code
         UIUpdate();//rearrange the segments
     } 
-
     public void Clear()
     {
         if (!allowCode)
@@ -186,7 +186,6 @@ public class PlayerProgrammer : MonoBehaviour
         currentIndex = 0;
         UIUpdate();
     }
-
     public void Remove()
     {
         if (!allowCode)
@@ -236,7 +235,6 @@ public class PlayerProgrammer : MonoBehaviour
         }
         return count;
     }
-
     public void IndexUp()
     {
         if (currentIndex < Count())
@@ -245,7 +243,6 @@ public class PlayerProgrammer : MonoBehaviour
             UIUpdate();
         }
     }
-
     public void IndexDown()
     {
         if (currentIndex > 0)
@@ -253,6 +250,11 @@ public class PlayerProgrammer : MonoBehaviour
             currentIndex--;
             UIUpdate();
         }
+    }
+    public void SetIndex(int n)
+    {
+        currentIndex = n;
+        UIUpdate();
     }
     public void UIUpdate()
     {
@@ -273,9 +275,11 @@ public class PlayerProgrammer : MonoBehaviour
         right = 0;
         down = 0;
         CodeSegment T = listFirst;
+        int indexReassign = 1;
         while(T!=null)
         {
             T.gameObject.transform.localPosition = codeZero + right * rightShift + down * downShift;
+            T.index.indexNum = indexReassign;
             right++;
             if(right % 8 == 0)
             {
@@ -283,6 +287,7 @@ public class PlayerProgrammer : MonoBehaviour
                 down++;
             }
             T = T.Next;
+            indexReassign++;
         }
         //rearrange the CodeSegment Objects to form the layout of the UI, along with inserting the text editor flashing | thing at currentIndex
     }

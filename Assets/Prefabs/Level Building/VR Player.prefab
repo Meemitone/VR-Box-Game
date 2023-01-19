@@ -11689,6 +11689,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Instruction List
       objectReference: {fileID: 0}
+    - target: {fileID: 2154703689075309703, guid: 380c1dd9a5c352c4983beb97ef040115,
+        type: 3}
+      propertyPath: proggers
+      value: 
+      objectReference: {fileID: 3667850668762372672}
     - target: {fileID: 2225410563682282208, guid: 380c1dd9a5c352c4983beb97ef040115,
         type: 3}
       propertyPath: onPressed.m_PersistentCalls.m_Calls.Array.data[1].m_Target

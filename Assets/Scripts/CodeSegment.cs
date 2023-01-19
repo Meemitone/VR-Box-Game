@@ -8,4 +8,6 @@ public class CodeSegment : MonoBehaviour
     public CodeSegment Prev;
     public PlayerProgrammer.codes code;
     public GameObject highlight;
+    public IndexReaders index;
+    public MeshRenderer indexMesh;
 }
