@@ -58,7 +58,7 @@ MonoBehaviour:
   moveUpAcceleration: 0.001
   moveUpTime: 3
   upCountSpeed: 0.1
-  inCountSpeed: 0.25
+  inCountSpeed: 0.75
   cubes: []
   cubesSavedPos: []
   cubesActive: 
