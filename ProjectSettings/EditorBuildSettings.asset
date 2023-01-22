@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Game Levels/Tutorial.unity
+    guid: 962cc10493f72dd4e93e0f8b3215a33c
+  - enabled: 1
+    path: Assets/Scenes/Game Levels/Tutorial 1.unity
+    guid: 2d693f5717b63734f939de4fec2b2447
+  - enabled: 1
     path: Assets/Scenes/Game Levels/Menu.unity
     guid: d89aed4a98c346e409db3d3539681860
   - enabled: 1
@@ -23,12 +29,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game Levels/Level 5.unity
     guid: b098a3ead241dc946879cf8bca5a3cd6
-  - enabled: 1
-    path: Assets/Scenes/Game Levels/Tutorial.unity
-    guid: 962cc10493f72dd4e93e0f8b3215a33c
-  - enabled: 1
-    path: Assets/Scenes/Game Levels/Tutorial 1.unity
-    guid: 2d693f5717b63734f939de4fec2b2447
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260,
       type: 2}

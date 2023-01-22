@@ -27,7 +27,7 @@ public class FaceScript : MonoBehaviour
         LOADLEVEL,
     }
 
-    public int loadLevelIndex = 0;
+    public int loadLevelIndex = 2;
 
     public void doAwake()
     {
@@ -74,6 +74,7 @@ public class FaceScript : MonoBehaviour
 
     private void Start()
     {
+        if (loadLevelIndex == 0) loadLevelIndex = 1;
         //Awake is called when the scene loads, start is called before the first frame if the object is enabled
         //I need to assign the facechecker directions after this gets it's direction from the cube script, so I do that now that awake has happened
         switch (sourcedir)
