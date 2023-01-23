@@ -52,7 +52,7 @@ MonoBehaviour:
   moveInSpawn: {x: 0, y: -100, z: 0}
   onyanSpawn: {x: 0, y: 3, z: 0}
   cubeMoveNum: 0
-  inLerpFloat: 0.01
+  inLerpFloat: 0.025
   inLerpTolorance: 0.01
   upSpeedCap: 5
   moveUpAcceleration: 0.001

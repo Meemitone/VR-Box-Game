@@ -20,7 +20,7 @@ public class FaceCheckerScript : MonoBehaviour
         {
             if (cubeOverlaps.Length > 1)
             {
-                Debug.Log("Multiple cubes detected by one facecheck", gameObject);
+                //Debug.Log("Multiple cubes detected by one facecheck", gameObject);
             }
             cube = cubeOverlaps[0].GetComponent<CubeScript>();
         }
@@ -28,7 +28,7 @@ public class FaceCheckerScript : MonoBehaviour
         {
             if (faceOverlaps.Length > 1)
             {
-                Debug.Log("Multiple faces detected by one facecheck", gameObject);
+                //Debug.Log("Multiple faces detected by one facecheck", gameObject);
             }
             face = faceOverlaps[0].GetComponent<FaceScript>();
         }
