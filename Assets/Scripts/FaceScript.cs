@@ -34,7 +34,7 @@ public class FaceScript : MonoBehaviour
         //check if this face is inside a cube, if so, then it can't be traversed 
         Collider[] checklist = Physics.OverlapSphere(transform.position, 0.001f, CubeLayer, QueryTriggerInteraction.Collide);
         if (checklist.Length > 1)
-            Debug.Log("Face hit multiple cubes", transform.parent.gameObject);
+            //Debug.Log("Face hit multiple cubes", transform.parent.gameObject);
         if (checklist.Length > 0)
             gameObject.SetActive(false);//face hit at least 1 cube so disable it (and therefore it's childs)
         /*if (faceT == FaceType.BLOCK)
@@ -117,7 +117,7 @@ public class FaceScript : MonoBehaviour
                 west.direction = CubeScript.dirs.UP;
                 break;
             default:
-                Debug.Log("Face failed to initialize", this);
+                //Debug.Log("Face failed to initialize", this);
                 break;
         }//this switch statement assigns all the directions to the childed checkers
         //get face links, east is commented, the rest are the same but replace east with new direction
@@ -139,7 +139,7 @@ public class FaceScript : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("East Raycast missed", this);
+                            //Debug.Log("East Raycast missed", this);
                         }
                     }
                 }
@@ -170,7 +170,7 @@ public class FaceScript : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("West Raycast missed", this);
+                            //Debug.Log("West Raycast missed", this);
                         }
                     }
                 }
@@ -201,7 +201,7 @@ public class FaceScript : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("North Raycast missed", this);
+                            //Debug.Log("North Raycast missed", this);
                         }
                     }
                 }
@@ -232,7 +232,7 @@ public class FaceScript : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("South Raycast missed", this);
+                            //Debug.Log("South Raycast missed", this);
                         }
                     }
                 }
@@ -267,7 +267,7 @@ public class FaceScript : MonoBehaviour
         {
             return faceWest;
         }
-        Debug.Log("GetFaceInDir recieved invalid dir (Up or down while on the up face for e.g.)", this);
+        //Debug.Log("GetFaceInDir recieved invalid dir (Up or down while on the up face for e.g.)", this);
         return null;
     }
 
